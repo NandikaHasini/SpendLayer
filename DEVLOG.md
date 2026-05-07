@@ -13,6 +13,8 @@
 - Added Vitest setup and smoke tests
 - Created foundational folder architecture
 - Verified build/test/dev workflows
+- Fixed Next.js 16 async params issue for dynamic report routes
+- Verified build/test/dev environment stability after framework adaptation
 
 **What I learned:**
 - Tailwind v4 and Next.js 16 require more incremental integration patterns than older setups
