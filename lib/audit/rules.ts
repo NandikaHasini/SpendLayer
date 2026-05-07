@@ -121,7 +121,9 @@ export function applyConsolidationRule(
     const copilotTool = tools.find((t) => t.vendorId === 'github_copilot')!
     const chatgptTool = tools.find((t) => t.vendorId === 'chatgpt')!
     const combinedSpend = copilotTool.monthlySpend + chatgptTool.monthlySpend
-    const cursorProCost = 20
+    const cursorProPlan = getPlanByName('cursor', 'Pro')
+    if (!cursorProPlan) return null
+    const cursorProCost = getEffectiveMonthlyCost(cursorProPlan, 1)
 
     const monthlySavings = Math.max(0, combinedSpend - cursorProCost)
     if (monthlySavings < 5) return null
@@ -134,7 +136,7 @@ export function applyConsolidationRule(
       monthlySavings,
       annualSavings: monthlySavings * 12,
       confidence: 'MEDIUM',
-      reason: `Cursor Pro ($20/seat) can replace both GitHub Copilot and ChatGPT for coding workflows, potentially saving $${monthlySavings}/month. It bundles code completion and AI chat in one editor.`,
+      reason: `Cursor Pro ($${cursorProCost}/seat) can replace both GitHub Copilot and ChatGPT for coding workflows, potentially saving $${monthlySavings}/month. It bundles code completion and AI chat in one editor.`,
       switchingCostNote:
         'Medium — requires adopting a new editor. Worth evaluating if your workflow is primarily coding.',
     }

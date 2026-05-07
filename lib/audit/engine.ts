@@ -17,7 +17,11 @@ import {
   isSavingsSignificant,
 } from './calculator'
 
-export function runAudit(input: AuditInput): AuditResult {
+interface RunAuditOptions {
+  generatedAt?: string
+}
+
+export function runAudit(input: AuditInput, options?: RunAuditOptions): AuditResult {
   const recommendations: AuditRecommendation[] = []
   const toolSavings: number[] = []
   const currentSpends: number[] = input.tools.map((t) => t.monthlySpend)
@@ -99,6 +103,6 @@ export function runAudit(input: AuditInput): AuditResult {
     totalAnnualSavings: totalMonthlySavings * 12,
     hasSignificantSavings: totalMonthlySavings >= 20,
     summary: null,
-    generatedAt: new Date().toISOString(),
+    generatedAt: options?.generatedAt ?? new Date().toISOString(),
   }
 }

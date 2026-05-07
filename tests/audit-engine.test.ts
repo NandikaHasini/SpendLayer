@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { runAudit } from '@/lib/audit/engine'
+import { getEffectiveMonthlyCost, getPlanByName } from '@/lib/pricing'
 import type { AuditInput } from '@/types/audit'
 
 const baseInput: AuditInput = {
@@ -34,6 +35,22 @@ describe('Audit Engine — KEEP recommendations', () => {
     const result = runAudit(input)
     expect(result.recommendations[0].recommendationType).toBe('KEEP')
     expect(result.hasSignificantSavings).toBe(false)
+  })
+})
+
+describe('Audit Engine — generatedAt', () => {
+  it('uses generatedAt override when provided', () => {
+    const generatedAt = '2026-01-01T00:00:00.000Z'
+    const result = runAudit(baseInput, { generatedAt })
+    expect(result.generatedAt).toBe(generatedAt)
+  })
+
+  it('defaults generatedAt to a valid ISO timestamp', () => {
+    const result = runAudit(baseInput)
+    expect(result.generatedAt).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/
+    )
+    expect(Number.isNaN(Date.parse(result.generatedAt))).toBe(false)
   })
 })
 
@@ -127,6 +144,27 @@ describe('Audit Engine — CONSOLIDATE recommendations', () => {
     )
     expect(consolidateRec).toBeDefined()
     expect(consolidateRec?.recommendedAlternativeVendorId).toBe('cursor')
+  })
+
+  it('calculates consolidation savings from Cursor Pro pricing data', () => {
+    const input: AuditInput = {
+      ...baseInput,
+      primaryUseCase: 'coding',
+      tools: [
+        { vendorId: 'github_copilot', planName: 'Pro', seats: 1, monthlySpend: 10 },
+        { vendorId: 'chatgpt', planName: 'Plus', seats: 1, monthlySpend: 20 },
+      ],
+    }
+    const cursorProPlan = getPlanByName('cursor', 'Pro')
+    expect(cursorProPlan).toBeDefined()
+
+    const result = runAudit(input)
+    const consolidateRec = result.recommendations.find(
+      (r) => r.recommendationType === 'CONSOLIDATE'
+    )
+    const cursorProCost = getEffectiveMonthlyCost(cursorProPlan!, 1)
+
+    expect(consolidateRec?.monthlySavings).toBe(30 - cursorProCost)
   })
 })
 
