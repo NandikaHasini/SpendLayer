@@ -2,7 +2,8 @@
 
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import type { SelectedTool, UseCase, AuditResult } from '@/types'
+import type { SelectedTool, UseCase } from '@/types'
+import type { AuditResult } from '@/types/audit'
 
 interface AuditStore {
   // Persisted to localStorage
@@ -26,6 +27,7 @@ interface AuditStore {
   setTeamSize: (size: number) => void
   setUseCase: (useCase: UseCase) => void
   setAuditResult: (result: AuditResult, id: string) => void
+  clearAuditResult: () => void
   setIsSubmitting: (value: boolean) => void
   resetForm: () => void
 }
@@ -80,6 +82,9 @@ export const useAuditStore = create<AuditStore>()(
 
       setAuditResult: (result, id) =>
         set({ auditResult: result, auditId: id }),
+
+      clearAuditResult: () =>
+        set({ auditResult: null, auditId: null }),
 
       setIsSubmitting: (value) => set({ isSubmitting: value }),
 
