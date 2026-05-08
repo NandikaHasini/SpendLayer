@@ -2,9 +2,14 @@ import { AuditForm } from '@/components/forms/AuditForm'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Audit Your AI Spend - SpendLayer',
+  title: 'Audit Your AI Spend | SpendLayer',
   description:
     'Enter your AI tooling stack and get a free, deterministic spend audit with real savings recommendations.',
+  openGraph: {
+    title: 'Audit Your AI Spend | SpendLayer',
+    description:
+      'Enter your AI tooling stack and get a free, deterministic spend audit with real savings recommendations.',
+  },
 }
 
 export default function AuditPage() {

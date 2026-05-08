@@ -86,7 +86,9 @@ export function StepFour({ values, onChange, errors }: StepFourProps) {
       </div>
 
       {errors.agreedToAudit && (
-        <p className="text-xs text-red-500">{errors.agreedToAudit}</p>
+        <p className="text-xs text-red-500" role="alert">
+          {errors.agreedToAudit}
+        </p>
       )}
     </div>
   )

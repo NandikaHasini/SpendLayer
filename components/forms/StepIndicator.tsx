@@ -45,6 +45,7 @@ export function StepIndicator({
                       !isCurrent &&
                       'bg-slate-100 text-slate-400'
                   )}
+                  aria-current={isCurrent ? 'step' : undefined}
                 >
                   {isCompleted ? '✓' : stepNumber}
                 </div>

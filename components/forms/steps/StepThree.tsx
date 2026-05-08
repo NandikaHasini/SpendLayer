@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { ToolCard } from '../ToolCard'
 import { getAllVendors } from '@/lib/pricing'
 import type { AuditFormValues, ToolFormEntry } from '@/types/form'
@@ -72,6 +71,7 @@ export function StepThree({ values, onChange, errors }: StepThreeProps) {
               type="button"
               onClick={() => addTool(vendor.id)}
               disabled={isSelected(vendor.id)}
+              aria-pressed={isSelected(vendor.id)}
               className={cn(
                 'px-3 py-1.5 rounded-full text-sm font-medium border transition-colors',
                 isSelected(vendor.id)
@@ -81,7 +81,9 @@ export function StepThree({ values, onChange, errors }: StepThreeProps) {
             >
               {vendor.name}
               {isSelected(vendor.id) && (
-                <span className="ml-1.5 text-emerald-500">✓</span>
+                <span className="ml-1.5 text-emerald-500" aria-hidden="true">
+                  ✓
+                </span>
               )}
             </button>
           ))}
@@ -106,7 +108,10 @@ export function StepThree({ values, onChange, errors }: StepThreeProps) {
       )}
 
       {tools.length === 0 && (
-        <div className="text-center py-8 border border-dashed border-slate-200 rounded-lg">
+        <div
+          className="text-center py-8 border border-dashed border-slate-200 rounded-lg"
+          aria-live="polite"
+        >
           <p className="text-sm text-slate-400">
             Select at least one tool above to continue
           </p>
@@ -114,7 +119,9 @@ export function StepThree({ values, onChange, errors }: StepThreeProps) {
       )}
 
       {errors.tools && (
-        <p className="text-xs text-red-500">{errors.tools}</p>
+        <p className="text-xs text-red-500" role="alert">
+          {errors.tools}
+        </p>
       )}
     </div>
   )

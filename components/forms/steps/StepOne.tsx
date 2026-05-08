@@ -61,7 +61,9 @@ export function StepOne({ values, onChange, errors }: StepOneProps) {
           ))}
         </div>
         {errors.primaryUseCase && (
-          <p className="text-xs text-red-500">{errors.primaryUseCase}</p>
+          <p className="text-xs text-red-500" role="alert">
+            {errors.primaryUseCase}
+          </p>
         )}
       </div>
 
@@ -88,7 +90,9 @@ export function StepOne({ values, onChange, errors }: StepOneProps) {
           ))}
         </div>
         {errors.usageIntensity && (
-          <p className="text-xs text-red-500">{errors.usageIntensity}</p>
+          <p className="text-xs text-red-500" role="alert">
+            {errors.usageIntensity}
+          </p>
         )}
       </div>
     </div>

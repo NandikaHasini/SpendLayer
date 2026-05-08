@@ -47,9 +47,13 @@ export function StepTwo({ values, onChange, errors }: StepTwoProps) {
           }
           placeholder="e.g. 5"
           className="max-w-xs"
+          aria-invalid={Boolean(errors.teamSize)}
+          aria-describedby={errors.teamSize ? 'teamSize-error' : undefined}
         />
         {errors.teamSize && (
-          <p className="text-xs text-red-500">{errors.teamSize}</p>
+          <p id="teamSize-error" className="text-xs text-red-500" role="alert">
+            {errors.teamSize}
+          </p>
         )}
       </div>
 
@@ -76,7 +80,9 @@ export function StepTwo({ values, onChange, errors }: StepTwoProps) {
           ))}
         </div>
         {errors.workflowType && (
-          <p className="text-xs text-red-500">{errors.workflowType}</p>
+          <p className="text-xs text-red-500" role="alert">
+            {errors.workflowType}
+          </p>
         )}
       </div>
 

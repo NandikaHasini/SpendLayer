@@ -85,9 +85,17 @@ export function ToolCard({
               }
               placeholder="1"
               className="text-sm"
+              aria-invalid={Boolean(errors?.seats)}
+              aria-describedby={errors?.seats ? `tool-${index}-seats-error` : undefined}
             />
             {errors?.seats && (
-              <p className="text-xs text-red-500">{errors.seats}</p>
+              <p
+                id={`tool-${index}-seats-error`}
+                className="text-xs text-red-500"
+                role="alert"
+              >
+                {errors.seats}
+              </p>
             )}
           </div>
 
@@ -107,9 +115,19 @@ export function ToolCard({
               }
               placeholder="0.00"
               className="text-sm"
+              aria-invalid={Boolean(errors?.monthlySpend)}
+              aria-describedby={
+                errors?.monthlySpend ? `tool-${index}-spend-error` : undefined
+              }
             />
             {errors?.monthlySpend && (
-              <p className="text-xs text-red-500">{errors.monthlySpend}</p>
+              <p
+                id={`tool-${index}-spend-error`}
+                className="text-xs text-red-500"
+                role="alert"
+              >
+                {errors.monthlySpend}
+              </p>
             )}
           </div>
         </div>

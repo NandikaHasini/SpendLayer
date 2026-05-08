@@ -11,6 +11,7 @@ import {
   stepThreeSchema,
 } from '@/lib/audit/form-schema'
 import { normalizeFormStep } from '@/lib/audit/form-step'
+import { persistReportViaApi } from '@/lib/report-client'
 import { StepIndicator } from './StepIndicator'
 import { StepOne } from './steps/StepOne'
 import { StepTwo } from './steps/StepTwo'
@@ -122,8 +123,14 @@ export function AuditForm() {
 
       const result = runAudit(auditInput)
       const auditId = generateAuditId()
-      setAuditResult(result, auditId)
       resetForm()
+      setAuditResult(result, auditId)
+
+      const persistenceResult = await persistReportViaApi(auditId, auditInput, result)
+      if (!persistenceResult.ok) {
+        console.warn(persistenceResult.message ?? 'Report persistence failed.')
+      }
+
       router.push(`/spend-report/${auditId}`)
     } catch (err) {
       console.error('Audit generation failed:', err)
@@ -160,7 +167,9 @@ export function AuditForm() {
         </Card>
 
         {errors.form && (
-          <p className="text-sm text-red-500 text-center">{errors.form}</p>
+          <p className="text-sm text-red-500 text-center" role="alert">
+            {errors.form}
+          </p>
         )}
 
         <div className="flex items-center justify-between">
@@ -168,7 +177,7 @@ export function AuditForm() {
             type="button"
             variant="ghost"
             onClick={handleBack}
-            disabled={displayStep === 1}
+            disabled={Boolean(displayStep === 1)}
             className="text-slate-500"
           >
             ← Back
