@@ -192,3 +192,31 @@
 The biggest engineering challenge was preserving deterministic recommendation behavior while improving frontend persistence, hydration safety, and report reliability.
 
 The project intentionally prioritized explainability and trustworthiness over AI-generated automation.
+
+## Day 2 — 2026-05-08
+
+**Hours worked:** 5–6
+
+**What I did:**
+- Added GitHub Actions CI workflow triggering on push and pull_request for automated test and build verification
+- Created .env.example documenting all required environment variable placeholders
+- Created DEPLOYMENT.md with full Vercel deployment steps, Supabase schema, environment variable documentation, architecture notes, and post-deployment QA checklist
+- Performed documentation consistency pass across README.md, ARCHITECTURE.md, PRICING_DATA.md
+- Confirmed Supabase persistence correctly documented as active for deterministic report storage and retrieval
+- Documented graceful degradation behavior for optional AI summary and email integrations
+- Verified all 89 tests passing and production build clean after all infrastructure changes
+- Confirmed deterministic audit engine behavior completely unchanged throughout
+
+**What I learned:**
+- Documenting graceful degradation paths for optional integrations early prevents deployment confusion
+- Incremental documentation updates are significantly faster and more accurate than end-of-project documentation passes
+- Keeping SQL schema aligned with actual implementation prevents migration issues later
+
+**Blockers / what I'm stuck on:**
+- None — infrastructure hardening phase completed cleanly
+
+**Plan for tomorrow:**
+- Integrate AI summary generation using Anthropic API into /spend-report/[id] route
+- Implement lead capture form with Supabase persistence
+- Add transactional email via Resend with graceful fallback if API unavailable
+- Ensure AI summary failure does not degrade deterministic audit results in any scenario

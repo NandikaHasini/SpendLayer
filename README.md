@@ -106,7 +106,7 @@ This guarantees:
 ### Install dependencies
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 ### Start development server

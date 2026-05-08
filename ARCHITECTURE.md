@@ -32,6 +32,28 @@ User Input → Validation Layer → Audit Engine → Persistence Layer → Repor
 
 ---
 
+## Phase Status
+
+* Phase 1 completed
+* Phase 2 completed
+* Phase 3 completed
+* Phase 4 completed
+
+---
+
+## Current Folder Structure
+
+Core application folders include:
+
+* `components/forms/`
+* `components/forms/steps/`
+* `components/audit/`
+* `store/auditFormStore.ts`
+* `types/form.ts`
+* `lib/audit/form-schema.ts`
+
+---
+
 ## High-Level Architecture
 
 ```mermaid

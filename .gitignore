@@ -32,6 +32,16 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+.env.local
+.env
+!.env.example
+
+# repo hygiene
+node_modules/
+.next/
+out/
+*.log
+Thumbs.db
 
 # vercel
 .vercel
