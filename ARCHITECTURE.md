@@ -1,105 +1,150 @@
 # ARCHITECTURE
 
 ## Stack
-- Next.js 16
-- TypeScript
-- Tailwind CSS v4
-- shadcn/ui
-- Zustand
-- Supabase
-- Vitest
+
+* Next.js 16
+* TypeScript
+* Tailwind CSS v4
+* shadcn/ui
+* Zustand
+* Supabase
+* Vitest
+
+---
 
 ## Why This Stack
 
 Chosen for:
-- fast iteration
-- type safety
-- production-grade scalability
-- SEO and Open Graph support
-- strong developer experience
+
+* fast iteration
+* type safety
+* production-grade scalability
+* hydration-safe frontend rendering
+* lightweight state management
+* SEO and Open Graph support
+* strong developer experience
+
+---
 
 ## System Flow
 
-User Input → Zustand Store → Audit Engine → Recommendation Output → Report Rendering
+User Input → Validation Layer → Audit Engine → Persistence Layer → Report Rendering
+
+---
+
+## High-Level Architecture
+
+```mermaid
+flowchart TD
+
+A[Audit Form UI] --> B[React Hook Form + Zod Validation]
+B --> C[Deterministic Audit Engine]
+
+C --> D[Pricing Intelligence Layer]
+C --> E[Recommendation Rules]
+
+C --> F[Audit Result]
+
+F --> G[Supabase Persistence]
+F --> H[Zustand Fallback Store]
+
+G --> I[Report Retrieval]
+H --> I
+
+I --> J[Report Rendering UI]
+```
 
 ---
 
 ## Planned Scaling
 
 If scaled to 10k audits/day:
-- move audit processing to background jobs
-- add Redis caching
-- optimize pricing lookup layer
-- move report generation to async pipeline
+
+* move audit processing to background jobs
+* add Redis caching
+* optimize pricing lookup layer
+* move report generation to async pipelines
+* introduce lightweight analytics aggregation
+* add rate limiting for public endpoints
+
+The current architecture intentionally remains lightweight because the project is an MVP-focused deterministic SaaS system.
 
 ---
 
-## Phase 2 — Pricing Intelligence & Audit Engine
+## Deterministic Audit Philosophy
 
-### Audit Flow Architecture
+SpendLayer intentionally avoids:
 
-The audit workflow is implemented as a deterministic multi-step form.
+* AI-generated financial recommendations
+* speculative savings claims
+* random recommendation behavior
+* opaque optimization logic
 
-### Flow
-1. Collect workflow and usage context
-2. Capture team metadata
-3. Collect subscribed AI tools and monthly spend
-4. Validate inputs using Zod schemas
-5. Generate deterministic recommendations through the audit engine
-6. Persist results in Zustand state
-7. Render recommendations in `/spend-report/[id]`
+All recommendations are generated deterministically through:
 
-### Deterministic Design
+* pricing datasets
+* rule-based evaluation
+* overlap analysis
+* savings calculations
 
-The recommendation engine does not use AI inference or randomness.
+This guarantees:
 
-All recommendations are generated synchronously from:
-- pricing datasets
-- rule-based evaluation
-- overlap analysis
-- savings calculations
-
-This guarantees repeatable outputs for identical inputs.
+* repeatable outputs
+* explainable recommendations
+* predictable testing behavior
+* financially conservative recommendations
 
 ---
 
-## State Management
+## Persistence Architecture
 
-SpendLayer uses Zustand for lightweight client-side persistence.
+### Primary Persistence
 
-### Stores
+Supabase stores:
 
-#### `auditStore`
-- stores generated audit results
-- stores audit IDs
-- supports refresh-safe report rendering
+* audit input payloads
+* deterministic audit results
+* report IDs
+* timestamps
 
-#### `auditFormStore`
-- stores in-progress form state
-- preserves multi-step progress
+### Fallback Persistence
 
-### Hydration Stability
+Zustand persistence remains available as a lightweight same-browser fallback path.
 
-Separate persistence keys are used to avoid state-shape collisions during hydration.
+This architecture improves:
 
-Mounted render gating is used to prevent SSR/client mismatch warnings.
+* durability
+* refresh safety
+* report shareability
+* resilience during temporary persistence failures
 
 ---
 
-## Frontend UX Philosophy
+## Accessibility Strategy
 
-The SpendLayer frontend is designed to prioritize:
-- clarity
-- trustworthiness
-- deterministic outputs
-- founder-oriented usability
+Accessibility improvements include:
 
-The UI intentionally avoids:
-- excessive animations
-- AI-generated explanations
-- speculative financial claims
+* semantic HTML structure
+* keyboard-accessible controls
+* focus-visible states
+* aria validation support
+* screen-reader-friendly form flows
 
-The goal is to present actionable and explainable audit recommendations.
+The system prioritizes practical accessibility without introducing heavy UI abstraction complexity.
+
+---
+
+## Reliability & Failure Handling
+
+The system includes:
+
+* invalid report handling
+* timeout-safe persistence fetches
+* graceful loading states
+* Supabase fallback behavior
+* environment validation safety
+
+Failure states intentionally fail gracefully instead of rendering undefined or broken UI.
 
 ---
 
@@ -108,14 +153,49 @@ The goal is to present actionable and explainable audit recommendations.
 The project uses Vitest for deterministic unit and integration testing.
 
 ### Coverage Includes
-- pricing validation
-- audit engine recommendations
-- savings calculations
-- form validation
-- audit submission flow
-- report stabilization
-- persistence-related behavior
+
+* pricing validation
+* audit engine recommendations
+* savings calculations
+* form validation
+* audit submission flow
+* report rendering
+* persistence behavior
+* loading states
+* stabilization logic
+* failure handling
 
 ### Current Status
-- 82 tests passing
-- zero TypeScript build errors
+
+* 89 tests passing
+* zero TypeScript build errors
+* deterministic outputs verified
+* responsive QA completed
+* hydration warnings removed
+
+---
+
+## Architectural Tradeoffs
+
+### Intentionally Chosen
+
+* deterministic recommendations over AI-generated reasoning
+* lightweight Zustand persistence over complex global state systems
+* manual pricing verification over speculative scraping
+* simple scalable architecture over premature microservices
+
+### Intentionally Avoided
+
+* enterprise RBAC systems
+* websocket infrastructure
+* microservice decomposition
+* vector databases
+* RAG pipelines
+* AI agent orchestration
+
+The architecture prioritizes:
+
+* maintainability
+* explainability
+* deterministic testing
+* MVP reliability
