@@ -26,3 +26,5 @@ If scaled to 10k audits/day:
 - add Redis caching
 - optimize pricing lookup layer
 - move report generation to async pipeline
+
+Phase 2 — Pricing Intelligence & Audit Engine
