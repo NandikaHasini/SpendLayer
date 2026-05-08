@@ -5,6 +5,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent } from '@/components/ui/card'
+import {
+  numberInputValue,
+  parseOptionalIntegerInput,
+  parseOptionalMoneyInput,
+} from '@/lib/audit/numeric-input'
 import { PlanSelector } from './PlanSelector'
 import { getVendorById } from '@/lib/pricing'
 import type { ToolFormEntry } from '@/types/form'
@@ -12,7 +17,11 @@ import type { ToolFormEntry } from '@/types/form'
 interface ToolCardProps {
   index: number
   entry: ToolFormEntry
-  onChange: (index: number, field: keyof ToolFormEntry, value: string | number) => void
+  onChange: (
+    index: number,
+    field: keyof ToolFormEntry,
+    value: string | number | undefined
+  ) => void
   onRemove: (index: number) => void
   errors?: {
     planName?: string
@@ -70,9 +79,9 @@ export function ToolCard({
             <Input
               type="number"
               min={1}
-              value={entry.seats === 0 ? '' : entry.seats}
+              value={numberInputValue(entry.seats)}
               onChange={(e) =>
-                onChange(index, 'seats', parseInt(e.target.value) || 0)
+                onChange(index, 'seats', parseOptionalIntegerInput(e.target.value))
               }
               placeholder="1"
               className="text-sm"
@@ -88,9 +97,13 @@ export function ToolCard({
               type="number"
               min={0}
               step={0.01}
-              value={entry.monthlySpend === 0 ? '' : entry.monthlySpend}
+              value={numberInputValue(entry.monthlySpend)}
               onChange={(e) =>
-                onChange(index, 'monthlySpend', parseFloat(e.target.value) || 0)
+                onChange(
+                  index,
+                  'monthlySpend',
+                  parseOptionalMoneyInput(e.target.value)
+                )
               }
               placeholder="0.00"
               className="text-sm"

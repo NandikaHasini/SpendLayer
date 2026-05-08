@@ -84,6 +84,16 @@ describe('stepThreeSchema', () => {
     expect(result.success).toBe(false)
   })
 
+  it('shows a friendly message when tools are missing', () => {
+    const result = stepThreeSchema.safeParse({})
+    expect(result.success).toBe(false)
+    if (!result.success) {
+      expect(result.error.issues[0].message).toBe(
+        'Please select at least one tool to continue.'
+      )
+    }
+  })
+
   it('fails when tool has negative monthlySpend', () => {
     const result = stepThreeSchema.safeParse({
       tools: [

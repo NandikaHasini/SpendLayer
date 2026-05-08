@@ -39,8 +39,10 @@ export const stepTwoSchema = z.object({
 
 export const stepThreeSchema = z.object({
   tools: z
-    .array(toolEntrySchema)
-    .min(1, 'Please add at least one AI tool')
+    .array(toolEntrySchema, {
+      error: 'Please select at least one tool to continue.',
+    })
+    .min(1, 'Please select at least one tool to continue.')
     .max(20, 'Maximum 20 tools allowed'),
 })
 

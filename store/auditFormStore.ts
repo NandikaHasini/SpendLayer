@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import type { AuditFormValues, FormStep } from '@/types/form'
 
 interface AuditFormStore {
@@ -43,7 +43,9 @@ export const useAuditFormStore = create<AuditFormStore>()(
         }),
     }),
     {
-      name: 'spendlayer-audit-form',
+      name: 'spendlayer-audit-form-v2',
+      storage: createJSONStorage(() => localStorage),
+      version: 1,
       partialize: (state) => ({
         currentStep: state.currentStep,
         values: state.values,

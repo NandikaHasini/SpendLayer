@@ -98,6 +98,8 @@ export const useAuditStore = create<AuditStore>()(
         selectedTools: state.selectedTools,
         teamSize: state.teamSize,
         useCase: state.useCase,
+        auditResult: state.auditResult,
+        auditId: state.auditId,
       }),
     }
   )

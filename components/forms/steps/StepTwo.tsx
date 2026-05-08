@@ -2,6 +2,7 @@
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { numberInputValue, parseOptionalIntegerInput } from '@/lib/audit/numeric-input'
 import { cn } from '@/lib/utils'
 import type { AuditFormValues } from '@/types/form'
 import type { WorkflowType } from '@/types/audit'
@@ -40,9 +41,9 @@ export function StepTwo({ values, onChange, errors }: StepTwoProps) {
           type="number"
           min={1}
           max={100000}
-          value={values.teamSize ?? ''}
+          value={numberInputValue(values.teamSize)}
           onChange={(e) =>
-            onChange({ teamSize: parseInt(e.target.value) || 1 })
+            onChange({ teamSize: parseOptionalIntegerInput(e.target.value) })
           }
           placeholder="e.g. 5"
           className="max-w-xs"

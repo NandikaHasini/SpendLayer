@@ -7,8 +7,8 @@ import type {
 export interface ToolFormEntry {
   vendorId: string
   planName: string
-  seats: number
-  monthlySpend: number
+  seats: number | undefined
+  monthlySpend: number | undefined
 }
 
 export interface AuditFormValues {

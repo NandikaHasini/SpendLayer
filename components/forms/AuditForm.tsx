@@ -4,7 +4,13 @@ import { useRouter } from 'next/navigation'
 import { useAuditFormStore } from '@/store/auditFormStore'
 import { useAuditStore } from '@/store/auditStore'
 import { runAudit } from '@/lib/audit/engine'
-import { stepOneSchema, stepTwoSchema, stepThreeSchema } from '@/lib/audit/form-schema'
+import {
+  auditFormSchema,
+  stepOneSchema,
+  stepTwoSchema,
+  stepThreeSchema,
+} from '@/lib/audit/form-schema'
+import { normalizeFormStep } from '@/lib/audit/form-step'
 import { StepIndicator } from './StepIndicator'
 import { StepOne } from './steps/StepOne'
 import { StepTwo } from './steps/StepTwo'
@@ -15,7 +21,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import type { AuditFormValues, FormStep } from '@/types/form'
 import type { AuditInput } from '@/types/audit'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const STEP_LABELS = ['Usage', 'Team', 'Tools', 'Review']
 const TOTAL_STEPS = 4
@@ -52,6 +58,12 @@ export function AuditForm() {
     useAuditFormStore()
   const { setAuditResult } = useAuditStore()
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({})
+  const [hasMounted, setHasMounted] = useState(false)
+  const displayStep = hasMounted ? normalizeFormStep(currentStep) : 1
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const handleChange = (partial: Partial<AuditFormValues>) => {
     updateValues(partial)
@@ -59,21 +71,21 @@ export function AuditForm() {
   }
 
   const handleNext = () => {
-    const stepErrors = validateStep(currentStep, values)
+    const stepErrors = validateStep(displayStep, values)
     if (Object.keys(stepErrors).length > 0) {
       setErrors(stepErrors)
       return
     }
     setErrors({})
-    if (currentStep < TOTAL_STEPS) {
-      setStep((currentStep + 1) as FormStep)
+    if (displayStep < TOTAL_STEPS) {
+      setStep((displayStep + 1) as FormStep)
     }
   }
 
   const handleBack = () => {
     setErrors({})
-    if (currentStep > 1) {
-      setStep((currentStep - 1) as FormStep)
+    if (displayStep > 1) {
+      setStep((displayStep - 1) as FormStep)
     }
   }
 
@@ -85,9 +97,14 @@ export function AuditForm() {
       return
     }
 
-    const stepErrors = validateStep(currentStep, values)
-    if (Object.keys(stepErrors).length > 0) {
-      setErrors(stepErrors)
+    const fullFormResult = auditFormSchema.safeParse(values)
+    if (!fullFormResult.success) {
+      const formErrors: Partial<Record<string, string>> = {}
+      for (const issue of fullFormResult.error.issues) {
+        const key = issue.path?.[0] as string
+        if (key) formErrors[key] = issue.message
+      }
+      setErrors(formErrors)
       return
     }
 
@@ -95,12 +112,12 @@ export function AuditForm() {
 
     try {
       const auditInput: AuditInput = {
-        tools: values.tools ?? [],
-        teamSize: values.teamSize ?? 1,
-        workflowType: values.workflowType ?? 'solo_developer',
-        usageIntensity: values.usageIntensity ?? 'moderate',
-        primaryUseCase: values.primaryUseCase ?? 'general',
-        overlappingSubscriptions: values.overlappingSubscriptions ?? false,
+        tools: fullFormResult.data.tools,
+        teamSize: fullFormResult.data.teamSize,
+        workflowType: fullFormResult.data.workflowType,
+        usageIntensity: fullFormResult.data.usageIntensity,
+        primaryUseCase: fullFormResult.data.primaryUseCase,
+        overlappingSubscriptions: fullFormResult.data.overlappingSubscriptions,
       }
 
       const result = runAudit(auditInput)
@@ -120,23 +137,23 @@ export function AuditForm() {
     <form onSubmit={handleSubmit} noValidate>
       <div className="space-y-6">
         <StepIndicator
-          currentStep={currentStep}
+          currentStep={displayStep}
           totalSteps={TOTAL_STEPS}
           labels={STEP_LABELS}
         />
 
         <Card className="border border-slate-200 shadow-sm">
           <CardContent className="pt-6 pb-6">
-            {currentStep === 1 && (
+            {displayStep === 1 && (
               <StepOne values={values} onChange={handleChange} errors={errors} />
             )}
-            {currentStep === 2 && (
+            {displayStep === 2 && (
               <StepTwo values={values} onChange={handleChange} errors={errors} />
             )}
-            {currentStep === 3 && (
+            {displayStep === 3 && (
               <StepThree values={values} onChange={handleChange} errors={errors} />
             )}
-            {currentStep === 4 && (
+            {displayStep === 4 && (
               <StepFour values={values} onChange={handleChange} errors={errors} />
             )}
           </CardContent>
@@ -151,13 +168,13 @@ export function AuditForm() {
             type="button"
             variant="ghost"
             onClick={handleBack}
-            disabled={currentStep === 1}
+            disabled={displayStep === 1}
             className="text-slate-500"
           >
             ← Back
           </Button>
 
-          {currentStep < TOTAL_STEPS ? (
+          {displayStep < TOTAL_STEPS ? (
             <Button
               type="button"
               onClick={handleNext}
@@ -168,7 +185,7 @@ export function AuditForm() {
           ) : (
             <AuditSubmitButton
               isSubmitting={isSubmitting}
-              disabled={!values.agreedToAudit}
+              disabled={Boolean(!values.agreedToAudit)}
             />
           )}
         </div>

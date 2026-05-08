@@ -38,7 +38,7 @@ export function StepThree({ values, onChange, errors }: StepThreeProps) {
   const updateTool = (
     index: number,
     field: keyof ToolFormEntry,
-    value: string | number
+    value: string | number | undefined
   ) => {
     const updated = tools.map((t, i) => {
       if (i !== index) return t
