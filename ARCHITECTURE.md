@@ -189,7 +189,7 @@ The project uses Vitest for deterministic unit and integration testing.
 
 ### Current Status
 
-* 89 tests passing
+* 110 tests passing
 * zero TypeScript build errors
 * deterministic outputs verified
 * responsive QA completed
@@ -221,3 +221,8 @@ The architecture prioritizes:
 * explainability
 * deterministic testing
 * MVP reliability
+
+AI Summary Layer
+Lead Capture Flow
+Supabase lead persistence
+fallback architecture
