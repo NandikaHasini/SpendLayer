@@ -9,8 +9,6 @@ SpendLayer is designed for deployment on Vercel with Supabase as the persistence
 - Node.js 20+
 - Vercel account
 - Supabase project (active — used for deterministic report storage and retrieval)
-- (Optional future integration) Anthropic API key for AI summaries
-- (Optional future integration) Resend API key for transactional email
 
 ---
 
@@ -22,8 +20,6 @@ Set the following in your Vercel project settings under **Environment Variables*
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Yes | Your Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Your Supabase anon/public key |
-| `ANTHROPIC_API_KEY` | Optional | Anthropic API key for AI summaries — fails gracefully if absent |
-| `RESEND_API_KEY` | Optional | Resend API key for transactional email — fails gracefully if absent |
 
 ---
 
@@ -70,8 +66,6 @@ npm run build
 
 - The audit engine is fully deterministic and requires no external API calls
 - Supabase persistence is active for report storage and shareable URL generation
-- AI summaries via Anthropic are optional — if `ANTHROPIC_API_KEY` is absent or the API call fails, a deterministic fallback summary is shown
-- Transactional email via Resend is optional — lead capture stores to Supabase regardless of email delivery status
 
 ---
 

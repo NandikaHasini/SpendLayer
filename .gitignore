@@ -41,6 +41,7 @@ node_modules/
 .next/
 out/
 *.log
+logs/
 Thumbs.db
 
 # vercel
