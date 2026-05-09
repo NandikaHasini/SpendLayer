@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Skeleton } from '@/components/ui/skeleton'
+import { AuditSummary } from '@/components/audit/AuditSummary'
+import { LeadCaptureForm } from '@/components/audit/LeadCaptureForm'
 import { useAuditStore } from '@/store/auditStore'
 import {
   getRecommendationTarget,
@@ -334,6 +336,11 @@ export function ReportView({
             </Card>
           ))}
         </section>
+
+        <div className="mt-6 space-y-4">
+          <AuditSummary auditResult={result} />
+          <LeadCaptureForm auditId={auditId} />
+        </div>
       </div>
     </main>
   )

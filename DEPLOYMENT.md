@@ -42,6 +42,24 @@ create table audit_reports (
 );
 ```
 
+### Lead Captures Table
+
+Run this SQL in your Supabase SQL editor to enable lead capture persistence:
+
+```sql
+create table lead_captures (
+  id uuid primary key default gen_random_uuid(),
+  email text not null,
+  company text,
+  role text,
+  team_size integer,
+  audit_id text,
+  created_at timestamptz default now()
+);
+```
+
+Lead capture failures are handled gracefully — the report renders regardless of whether persistence succeeds.
+
 ---
 
 ## Vercel Deployment Steps
