@@ -2,77 +2,76 @@
 
 ## North Star Metric
 
-Primary metric:
+Qualified audit reports completed per week.
 
-* completed audit reports generated
+A qualified audit is a completed report with:
 
-This reflects:
+- At least two tools entered
+- Team size provided
+- Non-zero monthly spend
+- At least one recommendation viewed
 
-* successful onboarding
-* perceived user value
-* audit workflow completion
+This is stronger than raw page traffic because it measures whether the product reaches the point where a founder can evaluate savings.
 
----
+## Input Metrics
 
-## Supporting Metrics
+- Unique visitors to the landing page
+- Audit starts
+- Tool rows added per audit
+- Pricing source views or trust-section interactions, if tracked later
+- Demo report views
+- Share link copy events, if tracked later
+- Email report attempts
+- Lead form submissions
 
-### Audit Completion Rate
+## Activation Metrics
 
-Percentage of users who:
+Primary activation:
 
-* start audit flow
-* successfully generate report
+- User completes an audit and views the report.
 
-### Report Share Rate
+Secondary activation:
 
-Percentage of reports:
+- User copies a report link.
+- User sends the report by email.
+- User submits the lead capture form.
+- User starts another audit after viewing a report.
 
-* copied
-* revisited
-* shared externally
+## Retention Proxy
 
-### Recommendation Distribution
+The MVP does not have accounts, so retention is measured indirectly:
 
-Track:
+- Repeat visits to the same report URL
+- Multiple reports generated from the same browser session
+- Replies to follow-up email
+- Users asking for pricing-change monitoring
+- Users requesting a deeper review after receiving a report
 
-* KEEP recommendations
-* DOWNGRADE recommendations
-* redundancy detections
-* consolidation opportunities
+## Quality Metrics
 
-### Average Estimated Savings
+- Percentage of reports with at least one actionable recommendation
+- Percentage of users who say recommendations are believable in interviews
+- Percentage of users who can explain why a recommendation was made
+- False-positive complaints from founders or engineering managers
+- Pricing-source correction reports
 
-Track:
+## Pivot Thresholds
 
-* monthly savings averages
-* annualized optimization estimates
+Consider a positioning pivot if:
 
----
+- Fewer than 15% of visitors start the audit after 500 targeted visitors.
+- Fewer than 40% of audit starters complete the workflow.
+- Fewer than 5% of completed reports submit an email or request follow-up.
+- User interviews show founders understand the output but do not care about the problem.
 
-## Product Health Metrics
+Consider a product pivot if:
 
-### Technical Reliability
+- Users trust the report but repeatedly ask for recurring monitoring instead of one-time audits.
+- Users want procurement workflows more than savings recommendations.
+- Users care more about seat utilization than vendor overlap.
 
-* build success rate
-* test pass rate
-* persistence reliability
-* hydration stability
+Consider narrowing ICP if:
 
-### UX Metrics
-
-* mobile responsiveness quality
-* validation failure frequency
-* loading state reliability
-
----
-
-## Long-Term Metrics
-
-Potential future metrics:
-
-* repeat audit frequency
-* audit history usage
-* export/download usage
-* retention over time
-
-The current MVP intentionally prioritizes deterministic reliability over aggressive analytics collection.
+- Engineering managers convert better than founders.
+- AI-heavy agencies show higher urgency than SaaS startups.
+- Solo founders complete audits but do not have enough spend to pay.

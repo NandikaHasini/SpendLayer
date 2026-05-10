@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { isLikelyBotLead } from '@/lib/leads/abuse-protection'
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -135,5 +136,13 @@ describe('normalizeOptionalString', () => {
 
   it('returns value as-is when already trimmed', () => {
     expect(normalizeOptionalString('Founder')).toBe('Founder')
+  })
+})
+
+describe('lead abuse protection', () => {
+  it('flags submissions when the honeypot field is filled', () => {
+    expect(isLikelyBotLead('https://spam.example')).toBe(true)
+    expect(isLikelyBotLead('')).toBe(false)
+    expect(isLikelyBotLead(undefined)).toBe(false)
   })
 })

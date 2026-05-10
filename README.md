@@ -1,100 +1,45 @@
 # SpendLayer
 
-SpendLayer is a deterministic AI spend audit platform designed to help startups and teams identify unnecessary AI tooling costs, redundant subscriptions, and optimization opportunities.
+SpendLayer is a deterministic AI spend audit platform for startup teams. Users enter their AI tooling stack, monthly spend, workflow type, and team size to receive structured recommendations and conservative savings estimates.
 
-Users enter their AI tooling stack, monthly spend, workflow type, and team size to receive structured audit recommendations and savings insights.
+Deployed URL: TODO
 
----
+Demo report: `/spend-report/demo`
+
+## Quickstart
+
+```bash
+npm install --legacy-peer-deps
+npm test
+npm run build
+npm run dev
+```
+
+Open `http://localhost:3000`, run an audit, or visit `http://localhost:3000/spend-report/demo`.
 
 ## Features
 
-### Deterministic Audit Engine
-
-- rule-based recommendation system
-- no AI-generated financial decisions
-- repeatable outputs for identical inputs
-
-### Pricing Intelligence
-
-Supports pricing analysis for:
-
-- ChatGPT
-- Claude
-- Cursor
-- GitHub Copilot
-- Gemini
-- Windsurf
-
-### Recommendation Types
-
-- KEEP
-- DOWNGRADE
-- CONSOLIDATE
-- REMOVE_REDUNDANCY
-- API_USAGE (informational only)
-
-### Responsive Audit Workflow
-
-- multi-step audit form
-- Zustand-powered persistence
-- hydration-safe rendering
-- mobile-responsive UX
-
-### Persistence & Reliability
-
+- Rule-based deterministic audit engine
+- Pricing intelligence for ChatGPT, Claude, Cursor, GitHub Copilot, Gemini, and Windsurf
+- Recommendation types: `KEEP`, `DOWNGRADE`, `CONSOLIDATE`, `REMOVE_REDUNDANCY`, and informational `API_USAGE`
+- Responsive multi-step audit workflow
 - Supabase-backed report persistence
-- refresh-safe report rendering
-- shareable report URLs
-- loading and fallback states
-- deterministic report retrieval
+- Shareable public report URLs
+- Reliable demo route with deterministic fallback data
+- Optional transactional report email delivery
+- Optional AI-assisted summary that never changes audit calculations
+- Lead capture with lightweight honeypot protection
 
-### AI-Assisted Summaries
+## Architecture Summary
 
-- supplemental AI-generated report summaries
-- deterministic audit engine remains authoritative
-- graceful fallback summaries when AI is unavailable
-- timeout-safe network handling
-- non-blocking summary rendering
+- Next.js app router renders the landing page, audit workflow, API routes, and public report pages.
+- `lib/audit` contains deterministic rules, calculations, validation, and view-model helpers.
+- `lib/pricing/tools.ts` stores vendor plan data with official source URLs and verification dates.
+- Supabase stores submitted reports and optional lead captures.
+- Resend sends report emails without generating new recommendations.
+- `/spend-report/demo` uses `lib/demo-report.ts` and does not require Supabase.
 
-### Lead Capture
-
-- Supabase-backed lead persistence
-- silent failure handling
-- trimmed and normalized inputs
-- accessibility-aware validation
-- graceful degradation when persistence is unavailable
-
-### Accessibility & Stability
-
-- keyboard-accessible controls
-- focus-visible interactions
-- aria-aware validation
-- hydration-safe state management
-
-### Testing & Verification
-
-- 110 automated tests
-- zero TypeScript build errors
-- deterministic calculation coverage
-- persistence and stabilization tests
-- AI fallback behavior verification
-- lead capture verification
-
----
-
-## Tech Stack
-
-- Next.js 16
-- TypeScript
-- Tailwind CSS v4
-- shadcn/ui
-- Zustand
-- Supabase
-- Vitest
-
----
-
-## Architecture Philosophy
+## Key Decisions
 
 SpendLayer intentionally avoids:
 
@@ -102,42 +47,48 @@ SpendLayer intentionally avoids:
 - AI-generated savings calculations
 - non-deterministic recommendation behavior
 - opaque optimization logic
+- enterprise claims that the MVP does not support
 
-All audit recommendations are generated synchronously through:
+AI-generated summaries are supplemental only. They never modify recommendations, savings totals, pricing calculations, or deterministic audit outputs.
 
-- pricing datasets
-- rule-based evaluation
-- overlap analysis
-- deterministic savings calculations
+The assignment MVP also avoids auth, dashboards, billing, analytics platforms, and complex infrastructure so the product stays focused on the audit workflow and submission evidence.
 
-This guarantees:
+## Screenshots
 
-- repeatable outputs
-- explainable recommendations
-- financially conservative estimates
-- predictable testing behavior
+Screenshots are stored in `docs/screenshots/`:
 
-AI-generated summaries are supplemental only and never modify:
+- `homepage-hero.png`
+- `audit-form.png`
+- `report-page.png`
+- `lead-capture-form.png`
+- `email-delivery-success.png`
+- `supabase-lead-persistence.png`
+- `terminal-tests.png`
+- `terminal-build.png`
 
-- recommendations
-- savings totals
-- pricing calculations
-- deterministic audit outputs
+## Documentation
 
----
+- `user_interviews.md` - real interview template with TODO placeholders
+- `GTM.md` - founder-led go-to-market strategy
+- `economics.md` - conservative CAC, conversion, ACV, and ARR assumptions
+- `metrics.md` - North Star, activation, retention proxy, and pivot thresholds
+- `landing_copy.md` - concise landing copy and FAQ
+- `PROMPTS.md` - AI summary prompt, fallback behavior, and deterministic recommendation philosophy
+- `PRICING_DATA.md` - official pricing source index and dataset coverage
+- `docs/demo-dataset.md` - deterministic demo route dataset
 
-## Local Development
+## Environment
 
-### Install dependencies
+Copy `.env.example` and configure the services you want to test:
 
-```bash
-npm install --legacy-peer-deps
-```
+- Supabase variables enable report and lead persistence.
+- Resend variables enable transactional report email.
+- AI summary variables enable optional narrative summaries.
+
+The audit report remains usable when optional services are unavailable.
 
 ## Email Report Delivery
 
-Email delivery is optional and supplemental. SpendLayer reports remain fully accessible in the browser and through shareable report links even when email delivery is not configured or a delivery attempt fails.
-
-To enable email delivery, create a Resend account at [resend.com](https://resend.com), verify your sending domain, and add `RESEND_API_KEY` to your local and production environment variables.
+Email delivery is optional and supplemental. SpendLayer reports remain accessible in the browser and through shareable report links even when email delivery is not configured or a delivery attempt fails.
 
 Report emails only forward deterministic audit data that already exists in the saved report. The email layer does not generate new recommendations, savings figures, or AI reasoning.

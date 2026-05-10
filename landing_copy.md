@@ -1,60 +1,62 @@
 # Landing Copy
 
-## Hero Section
+## Hero
 
-### Headline
+Headline:
 
-Stop Overpaying for AI Tools
+Audit your startup's AI spend in minutes.
 
-### Subheadline
+Subheadline:
 
-SpendLayer helps startups identify redundant AI subscriptions, downgrade opportunities, and unnecessary tooling costs using deterministic audit recommendations.
+SpendLayer reviews your AI tools, flags redundant subscriptions, and estimates conservative savings using deterministic pricing logic.
 
-### CTA
+Primary CTA:
 
-Run Your AI Spend Audit
+Run free audit
 
----
+Secondary CTA:
 
-## Trust Messaging
+View demo report
 
-* deterministic recommendations
-* conservative savings estimates
-* no fake AI-generated financial advice
-* explainable pricing logic
+Trust line:
 
----
+No black-box financial advice. Every recommendation is tied to pricing data and clear rules.
 
-## Feature Copy
+## Short Value Props
 
-### Deterministic Audit Engine
+- Find overlapping AI subscriptions before they become recurring waste.
+- See downgrade and consolidation opportunities across common AI tools.
+- Share a refresh-safe report with your cofounder or engineering lead.
+- Review source-backed pricing assumptions instead of vague AI guesses.
 
-Receive structured audit recommendations generated through rule-based pricing analysis.
+## FAQ
 
-### Pricing Intelligence
+### Is this financial advice?
 
-Analyze overlapping AI subscriptions across major AI tooling vendors.
+No. SpendLayer provides deterministic software-spend analysis based on user-entered tools and documented pricing data.
 
-### Shareable Reports
+### Does AI decide what we should buy?
 
-Generate refresh-safe audit reports with savings summaries and actionable recommendations.
+No. The audit engine is rule-based. AI is used only for optional summary wording and never changes savings calculations or recommendations.
 
----
+### What tools are supported?
 
-## Founder-Oriented Messaging
+The MVP covers ChatGPT, Claude, Cursor, GitHub Copilot, Gemini, and Windsurf.
 
-Built for:
+### Do I need to connect billing data?
 
-* startup founders
-* engineering leads
-* lean SaaS teams
-* AI-heavy workflows
+No. Enter your stack manually. This keeps the demo lightweight and avoids unnecessary permissions.
 
----
+### Can I share the report?
 
-## CTA Variations
+Yes. Each saved audit has a shareable report URL.
 
-* Audit My AI Spend
-* Analyze My Tooling Stack
-* Reduce Redundant AI Costs
-* Generate My Spend Report
+## Mock Social Proof
+
+Use only as clearly labeled placeholder copy until replaced with real user quotes.
+
+- "TODO: Replace with real founder quote after interview."
+- "TODO: Replace with real engineering manager quote after interview."
+- "TODO: Replace with real user feedback after demo."
+
+Do not present mock social proof as real customer evidence.

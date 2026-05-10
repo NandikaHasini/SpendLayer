@@ -35,7 +35,7 @@ export default function Home() {
               Start audit
             </Link>
             <Link
-              href='/spend-report/a3lsiqu1'
+              href='/spend-report/demo'
               className='inline-flex h-11 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-5 text-sm font-semibold text-white hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950'
             >
               View report example

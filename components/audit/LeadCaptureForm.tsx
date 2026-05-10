@@ -62,6 +62,7 @@ export function LeadCaptureForm({ auditId }: LeadCaptureFormProps) {
           company: company.trim() || null,
           role: role.trim() || null,
           auditId,
+          website: '',
         }),
         signal: controller.signal,
       })
@@ -106,6 +107,19 @@ export function LeadCaptureForm({ auditId }: LeadCaptureFormProps) {
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="space-y-3">
+          <div className="hidden" aria-hidden="true">
+            <Label htmlFor="lead-website">Website</Label>
+            <Input
+              id="lead-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value=""
+              onChange={() => undefined}
+            />
+          </div>
+
           <div className="space-y-1">
             <Label htmlFor="lead-email" className="text-xs text-slate-500">
               Work email

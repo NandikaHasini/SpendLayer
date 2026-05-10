@@ -7,6 +7,11 @@ import {
   getSupabaseReportEnvStatus,
   saveAuditReportToSupabase,
 } from '@/lib/report-storage'
+import {
+  DEMO_REPORT_ID,
+  buildDemoAuditResult,
+  demoAuditInput,
+} from '@/lib/demo-report'
 import { persistReportViaApi } from '@/lib/report-client'
 import type { AuditInput } from '@/types/audit'
 
@@ -81,6 +86,17 @@ describe('report storage helpers', () => {
     const result = await fetchAuditReportFromSupabase('abc123')
     expect(result.ok).toBe(false)
     expect(result.state).toBe('unavailable')
+  })
+})
+
+describe('demo report fallback', () => {
+  it('uses a stable demo slug and deterministic generated timestamp', () => {
+    const result = buildDemoAuditResult()
+
+    expect(DEMO_REPORT_ID).toBe('demo')
+    expect(demoAuditInput.tools).toHaveLength(5)
+    expect(result.generatedAt).toBe('2026-05-08T00:00:00.000Z')
+    expect(result.recommendations).toHaveLength(demoAuditInput.tools.length)
   })
 })
 
