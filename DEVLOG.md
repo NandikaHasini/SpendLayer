@@ -218,3 +218,28 @@
 The biggest engineering challenge was preserving deterministic audit behavior while incrementally introducing persistence, async rendering, and supplemental AI capabilities without compromising explainability or reliability.
 
 The project intentionally prioritized trustworthy deterministic outputs over speculative AI-generated automation.
+
+---
+
+## Day 4 — Email Delivery & Deployment Prep
+
+### What I Implemented
+
+- Resend-backed report email delivery
+- non-blocking email workflow on saved audit reports
+- graceful degradation when `RESEND_API_KEY` is missing or delivery fails
+- Open Graph and Twitter metadata for production sharing
+- deployment environment documentation for Supabase, Resend, app URL, and AI summary configuration
+
+### Important Architecture Decisions
+
+- Email delivery is supplemental only and never blocks report access
+- Report emails use deterministic audit totals and recommendation counts only
+- Delivery errors return safe client responses without exposing secrets or request payloads
+- `viewport` remains a separate Next.js export from `metadata`
+
+### Verification
+
+- Added email delivery and API route tests
+- Added client form coverage for rendering, accessibility attributes, validation paths, and non-navigation behavior
+- Preserved deterministic audit logic, pricing datasets, routing, and existing report calculations

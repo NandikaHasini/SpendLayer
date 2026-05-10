@@ -87,6 +87,50 @@ npm run build
 
 ---
 
+## Production Environment Checklist
+
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL used by client and server integrations |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase anon key for public Supabase access |
+| `SUPABASE_SERVICE_ROLE_KEY` | Yes | Server-only key for report and lead persistence |
+| `RESEND_API_KEY` | No | Optional Resend key for report email delivery |
+| `NEXT_PUBLIC_APP_URL` | Yes | Canonical production URL used for Open Graph metadata and report links |
+| `ANTHROPIC_API_KEY` | No | Optional key for the supplemental AI summary layer |
+
+## Resend Setup
+
+1. Create a Resend account at [resend.com](https://resend.com)
+2. Verify the sending domain you will use for SpendLayer report emails
+3. Add `RESEND_API_KEY` to Vercel environment variables
+4. Deploy and send a test report from a saved audit page
+
+Email delivery is supplemental. Reports must continue to render and remain shareable when `RESEND_API_KEY` is unset.
+
+## Open Graph Notes
+
+- Set `NEXT_PUBLIC_APP_URL` to the production origin, for example `https://spendlayer.com`
+- Add `public/og-image.png` at 1200x630 for social previews
+- Verify the deployed page metadata resolves to the production URL
+
+## Production Verification
+
+Before release:
+
+```bash
+npm test
+npm run build
+```
+
+Then verify:
+
+- [ ] Test email delivery with a real Resend key
+- [ ] Confirm report pages render with `RESEND_API_KEY` unset
+- [ ] Confirm email failure does not block report access or interaction
+- [ ] Confirm Open Graph preview uses `NEXT_PUBLIC_APP_URL` and `public/og-image.png`
+
+---
+
 ## Post-Deployment QA Checklist
 
 - [ ] Homepage loads without errors

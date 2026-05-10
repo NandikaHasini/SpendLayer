@@ -132,3 +132,12 @@ AI-generated summaries are supplemental only and never modify:
 
 ```bash
 npm install --legacy-peer-deps
+```
+
+## Email Report Delivery
+
+Email delivery is optional and supplemental. SpendLayer reports remain fully accessible in the browser and through shareable report links even when email delivery is not configured or a delivery attempt fails.
+
+To enable email delivery, create a Resend account at [resend.com](https://resend.com), verify your sending domain, and add `RESEND_API_KEY` to your local and production environment variables.
+
+Report emails only forward deterministic audit data that already exists in the saved report. The email layer does not generate new recommendations, savings figures, or AI reasoning.
