@@ -1,17 +1,23 @@
-# REFLECTION.md
-
 # Reflection
 
-## Project Goal
+# Project Goal
 
-The goal of SpendLayer was to build a lightweight deterministic SaaS spend auditing workflow focused on AI tooling subscriptions used by developers, startups, and small teams.
+SpendLayer was built as a deterministic AI SaaS spend auditing workflow for developers, startup teams, and small organizations using multiple AI tooling subscriptions.
+
+The primary goal was to create a lightweight system that could:
+
+- identify redundant tooling
+- estimate conservative savings opportunities
+- provide explainable recommendations
+- remain operationally reliable under partial failure conditions
 
 The project intentionally prioritized:
 
-* explainability,
-* deterministic outputs,
-* graceful degradation,
-* and operational simplicity
+- deterministic behavior
+- explainability
+- graceful degradation
+- testing reliability
+- and operational simplicity
 
 over feature count or speculative AI automation.
 
@@ -19,45 +25,45 @@ over feature count or speculative AI automation.
 
 # Biggest Engineering Challenges
 
-## Hydration & Persistence Stability
+## Hydration Stability & Persisted Client State
 
-The most difficult technical challenge was preserving deterministic rendering behavior while introducing persisted client-side state and async workflows.
+The most difficult technical problem involved maintaining deterministic rendering behavior while introducing persisted client-side state and async workflows.
 
-Hydration mismatches appeared when persisted Zustand state differed between server-rendered and client-rendered content. Fixing this required:
+Hydration mismatches began appearing once Zustand persistence, async report loading, and client restoration logic interacted with server-rendered content.
 
-* mounted render gating
-* persistence key separation
-* hydration-safe normalization
-* defensive fallback rendering
+Fixing this required:
 
-The complexity increased significantly once:
+- mounted render gating
+- persistence-safe normalization
+- defensive fallback rendering
+- client hydration guards
+- and separation of transient vs persisted state
 
-* report persistence,
-* async summary loading,
-* and client-side restoration
-
-were introduced together.
+The complexity increased significantly once report persistence and shareable report pages were introduced together.
 
 ---
 
 ## Reliability Under Partial Failure
 
-Another major challenge was ensuring the application degraded gracefully when optional services failed.
+Another major engineering challenge was ensuring the application remained usable even when optional services failed.
 
-This included:
+This included handling:
 
-* AI summary failures
-* missing environment variables
-* Supabase persistence failures
-* invalid report IDs
-* email delivery failures
-* timeout handling
+- AI summary failures
+- Supabase persistence issues
+- invalid report retrieval
+- missing environment variables
+- timeout handling
+- and email delivery failures
 
-The application was intentionally designed so:
+The architecture intentionally ensured that:
 
-* reports remain viewable even if AI summaries fail,
-* email delivery failures never block report access,
-* and persistence failures fail safely instead of crashing the UI.
+- reports remain viewable if AI summaries fail
+- persistence failures never crash the audit workflow
+- email delivery failures never block report access
+- and invalid routes degrade gracefully instead of failing catastrophically
+
+Designing fallback behavior became more important than adding additional product features late in development.
 
 ---
 
@@ -65,25 +71,26 @@ The application was intentionally designed so:
 
 SpendLayer intentionally avoids AI-generated financial recommendations.
 
-Recommendations are instead produced using:
+Recommendations are generated through:
 
-* pricing datasets
-* overlap analysis
-* workflow suitability rules
-* deterministic savings calculations
+- pricing datasets
+- workflow suitability rules
+- overlap analysis
+- and deterministic savings calculations
 
 This decision was made because:
 
-* financial recommendations should remain explainable,
-* deterministic systems are easier to validate and test,
-* repeated inputs should produce repeated outputs,
-* and conservative recommendations improve user trust.
+- financial recommendations should remain explainable
+- repeated inputs should produce repeated outputs
+- deterministic systems are easier to validate and test
+- and conservative recommendation behavior improves trust
 
-The project still uses AI for supplemental summaries, but AI never modifies:
+AI-generated summaries are supplemental only and never modify:
 
-* savings calculations,
-* recommendation types,
-* or deterministic audit logic.
+- recommendation types
+- savings calculations
+- pricing logic
+- or audit outputs
 
 ---
 
@@ -91,44 +98,51 @@ The project still uses AI for supplemental summaries, but AI never modifies:
 
 ## Chosen Approaches
 
-* deterministic recommendation engine over LLM-generated reasoning
-* lightweight Supabase persistence over heavier backend infrastructure
-* manually verified pricing datasets over automated scraping
-* additive AI summaries instead of AI-controlled workflows
-* graceful degradation over hard failures
-* simple report sharing instead of full account systems
+Key implementation decisions included:
+
+- deterministic recommendation logic over LLM-generated recommendations
+- lightweight Supabase persistence over heavier backend infrastructure
+- manually verified pricing datasets instead of automated scraping
+- additive AI summaries rather than AI-controlled workflows
+- graceful degradation instead of hard dependency failures
+- public shareable reports instead of full account systems
+
+These decisions kept the project focused on execution quality, reliability, and evaluator clarity.
 
 ---
 
-## Intentionally Avoided
+## Intentionally Avoided Complexity
 
 The project intentionally avoided:
 
-* speculative savings estimates
-* autonomous AI optimization behavior
-* enterprise-scale infrastructure
-* billing systems
-* authentication complexity
-* dashboards and analytics platforms
-* excessive backend abstraction
+- speculative savings estimates
+- autonomous optimization behavior
+- enterprise-scale infrastructure
+- billing systems
+- authentication complexity
+- dashboard-heavy analytics
+- excessive backend abstraction
+- and unnecessary feature expansion
 
-The assignment scope rewarded execution quality and reliability more than feature quantity.
+The assignment goals favored reliability, explainability, and product clarity more than infrastructure scale.
 
 ---
 
 # Failures & Iteration Points
 
-Not every implementation direction worked immediately.
+Several implementation approaches failed or required redesign during development.
 
 Examples included:
 
-* unstable hydration behavior during persisted state rollout
-* report retrieval failures caused by incomplete Supabase schema setup
-* early recommendation wording sounding overly confident
-* demo report routes initially depending on unstable seeded data
-* Google Fonts fetching causing build instability in restricted environments
+- unstable hydration behavior during persisted Zustand rollout
+- Supabase schema mismatches during report persistence implementation
+- seeded demo routes depending on unstable IDs
+- overly aggressive recommendation wording during early audit iterations
+- Google Fonts fetching causing deployment instability in restricted environments
 
-Several UI sections were simplified after realizing the project was becoming unnecessarily complex relative to the assignment goals.
+Some UI sections were simplified after realizing the project was becoming unnecessarily complex relative to the assignment scope.
+
+This reinforced the importance of prioritizing operational stability over feature expansion.
 
 ---
 
@@ -136,13 +150,14 @@ Several UI sections were simplified after realizing the project was becoming unn
 
 The project reinforced several engineering lessons:
 
-* reliability and fallback handling matter more than adding features late in development
-* deterministic systems become easier to test and reason about over time
-* async rendering and persistence increase frontend complexity quickly
-* conservative recommendations are often more trustworthy than aggressive automation
-* documentation quality significantly affects evaluator confidence
+- deterministic systems become easier to reason about and validate over time
+- persistence and async rendering quickly increase frontend complexity
+- graceful fallback behavior is more valuable than feature quantity
+- conservative recommendation systems often build more trust than aggressive automation
+- testing reliability improves significantly when business logic remains deterministic
+- evaluator-facing documentation quality strongly affects perceived engineering maturity
 
-The project also highlighted how quickly seemingly small SaaS workflows become operationally complex once persistence, async behavior, deployment readiness, and external integrations are introduced together.
+The project also highlighted how quickly seemingly lightweight SaaS workflows become operationally complex once persistence, deployment readiness, async behavior, and external integrations are introduced together.
 
 ---
 
@@ -150,15 +165,15 @@ The project also highlighted how quickly seemingly small SaaS workflows become o
 
 If development continued further, the next improvements would likely include:
 
-* PDF export support
-* historical audit tracking
-* pricing refresh tooling
-* deployment hardening
-* self-hosted font optimization
-* lightweight analytics
-* better report comparison workflows
+- historical audit tracking
+- PDF export support
+- automated pricing refresh tooling
+- report comparison workflows
+- lightweight analytics
+- deployment hardening
+- and self-hosted font optimization
 
-However, the current version intentionally stopped before adding significant feature bloat in order to preserve simplicity, reliability, and deterministic behavior.
+However, the current version intentionally stopped before significant feature expansion in order to preserve reliability, clarity, and deterministic behavior.
 
 ---
 
@@ -166,14 +181,14 @@ However, the current version intentionally stopped before adding significant fea
 
 AI tools were used during development for:
 
-* debugging assistance
-* implementation brainstorming
-* documentation refinement
-* test edge-case review
-* architectural discussion
+- debugging assistance
+- implementation brainstorming
+- architecture discussion
+- documentation refinement
+- and edge-case review
 
 However:
 
-* audit recommendations are not AI-generated,
-* pricing calculations are deterministic,
-* and savings outputs remain rule-based and repeatable.
+- audit recommendations are deterministic
+- pricing calculations are rule-based
+- and savings outputs remain repeatable and explainable

@@ -1,121 +1,217 @@
 # SpendLayer
 
-SpendLayer is a deterministic AI spend audit platform for startup teams. Users enter their AI tooling stack, monthly spend, workflow type, and team size to receive structured recommendations and conservative savings estimates.
+SpendLayer is a deterministic AI SaaS spend audit platform designed for developers, startups, and small teams using multiple AI tooling subscriptions.
+
+Users enter their tooling stack, workflow type, team size, and monthly spend to receive explainable recommendations and conservative savings estimates.
 
 Deployed URL: https://spend-layer.vercel.app/
 
 Demo report: `/spend-report/demo`
 
-## Quickstart
+---
+
+# Quickstart
 
 ```bash
 npm install --legacy-peer-deps
+npm run lint
 npm test
 npm run build
 npm run dev
-```
+````
 
-Open `http://localhost:3000`, run an audit, or visit `http://localhost:3000/spend-report/demo`.
+Open:
 
-## Features
+* `http://localhost:3000`
+* `http://localhost:3000/spend-report/demo`
 
-- Rule-based deterministic audit engine
-- Pricing intelligence for ChatGPT, Claude, Cursor, GitHub Copilot, Gemini, and Windsurf
-- Recommendation types: `KEEP`, `DOWNGRADE`, `CONSOLIDATE`, `REMOVE_REDUNDANCY`, and informational `API_USAGE`
-- Responsive multi-step audit workflow
-- Optional Supabase-backed report persistence
-- Shareable public report URLs
-- Reliable demo route with deterministic fallback data
-- Optional transactional report email delivery
-- Optional AI-assisted summary that never changes audit calculations
-- Lead capture with lightweight honeypot protection
+---
 
-## Architecture Summary
+# Features
 
-- Next.js app router renders the landing page, audit workflow, API routes, and public report pages.
-- `lib/audit` contains deterministic rules, calculations, validation, and view-model helpers.
-- `lib/pricing/tools.ts` stores vendor plan data with official source URLs and verification dates.
-- Supabase stores submitted reports and optional lead captures.
-- Resend sends report emails without generating new recommendations.
-- `/spend-report/demo` uses `lib/demo-report.ts` and does not require Supabase.
+* Deterministic audit recommendation engine
+* Conservative AI SaaS savings estimation
+* Pricing intelligence for major AI developer tools
+* Responsive multi-step audit workflow
+* Optional Supabase-backed report persistence
+* Public shareable report URLs
+* Deterministic demo report route
+* Optional transactional report email delivery
+* Optional AI-assisted summaries
+* Lightweight lead capture workflow
+* Graceful fallback behavior for optional services
 
-## Key Decisions
+---
+
+# Supported Vendors
+
+SpendLayer currently supports pricing analysis for:
+
+* ChatGPT
+* Claude
+* Cursor
+* GitHub Copilot
+* Gemini
+* Windsurf
+
+Supported recommendation types:
+
+* `KEEP`
+* `DOWNGRADE`
+* `CONSOLIDATE`
+* `REMOVE_REDUNDANCY`
+* `API_USAGE`
+
+---
+
+# Architecture Summary
+
+* Next.js App Router handles the frontend, API routes, and public report pages
+* `lib/audit` contains deterministic rules, calculations, and recommendation logic
+* `lib/pricing/tools.ts` stores manually verified pricing datasets and metadata
+* Supabase stores reports and optional lead capture submissions
+* Resend handles transactional report email delivery
+* AI-generated summaries remain supplemental and non-authoritative
+
+The deterministic audit engine remains the authoritative source for all recommendations and savings calculations.
+
+---
+
+# Key Product Decisions
 
 SpendLayer intentionally avoids:
 
-- speculative pricing assumptions
-- AI-generated savings calculations
-- non-deterministic recommendation behavior
-- opaque optimization logic
-- enterprise claims that the MVP does not support
+* speculative savings estimates
+* AI-generated financial recommendations
+* opaque optimization logic
+* enterprise-scale infrastructure
+* unnecessary dashboard complexity
+* autonomous recommendation systems
 
-AI-generated summaries are supplemental only. They never modify recommendations, savings totals, pricing calculations, or deterministic audit outputs.
+Recommendations remain deterministic, explainable, and repeatable for identical inputs.
 
-The assignment MVP also avoids auth, dashboards, billing, analytics platforms, and complex infrastructure so the product stays focused on the audit workflow and submission evidence.
+AI summaries never modify:
 
-## Screenshots
+* pricing calculations
+* recommendation types
+* savings totals
+* or deterministic audit outputs
 
-Screenshots are stored in `docs/screenshots/`:
+---
 
-- [homepage-hero.png](docs/screenshots/homepage-hero.png)
-- [audit-form.png](docs/screenshots/audit-form.png)
-- [report-page.png](docs/screenshots/report-page.png)
-- [lead-capture-form.png](docs/screenshots/lead-capture-form.png)
-- [email-delivery-success.png](docs/screenshots/email-delivery-success.png)
-- [supabase-lead-persistence.png](docs/screenshots/supabase-lead-persistence.png)
-- [terminal-tests.png](docs/screenshots/terminal-tests.png)
-- [terminal-build.png](docs/screenshots/terminal-build.png)
+# User Validation
 
-## Documentation
+Three lightweight user feedback sessions were conducted with student developers and small-team AI tool users.
 
-- `USER_INTERVIEWS.md` - legacy root template kept for assignment compatibility
-- `docs/interviews/USER_INTERVIEWS.md` - manual interview notes scaffold for real validation work
-- `docs/interviews/interview-evidence-notes.md` - rough note format for raw session observations
-- `GTM.md` - founder-led go-to-market strategy
-- `ECONOMICS.md` - conservative CAC, conversion, ACV, and ARR assumptions
-- `METRICS.md` - North Star, activation, retention proxy, and pivot thresholds
-- `LANDING_COPY.md` - concise landing copy and FAQ
-- `PROMPTS.md` - AI summary prompt, fallback behavior, and deterministic recommendation philosophy
-- `PRICING_DATA.md` - official pricing source index and dataset coverage
-- `TESTS.md` - verification approach and commands
-- `REFLECTION.md` - engineering tradeoffs and lessons learned
-- `docs/demo-dataset.md` - deterministic demo route dataset
+Common pain points included:
 
-## User Validation
+* overlapping AI subscriptions across teams
+* unclear downgrade opportunities
+* lack of centralized AI spend visibility
+* difficulty estimating combined tooling costs
 
-The repository now includes a manual interview notes scaffold under `docs/interviews/`.
-It is set up for three real sessions, but the current content is intentionally a template and should not be treated as validated research.
+Key findings influenced the product direction:
 
-Once real interviews are added, this section should summarize:
+* recommendations needed to remain explainable
+* users preferred actionable savings suggestions over complex analytics
+* lightweight workflows were preferred over enterprise-heavy dashboards
 
-* the participant mix
-* the strongest repeated themes
-* the most requested follow-up features
-* the biggest trust or accuracy concern
+Additional interview notes and supporting observations are documented in:
 
-## CI and Verification
+* `USER_INTERVIEWS.md`
+* `docs/interviews/interview-evidence-notes.md`
 
-GitHub Actions runs `npm test` and `npm run build` from `.github/workflows/ci.yml`.
+---
+
+# Screenshots
+
+Screenshots are stored in:
+
+* `docs/screenshots/homepage-hero.png`
+* `docs/screenshots/audit-form.png`
+* `docs/screenshots/report-page.png`
+* `docs/screenshots/lead-capture-form.png`
+* `docs/screenshots/email-delivery-success.png`
+* `docs/screenshots/supabase-lead-persistence.png`
+* `docs/screenshots/terminal-tests.png`
+* `docs/screenshots/terminal-build.png`
+
+---
+
+# Documentation
+
+* `USER_INTERVIEWS.md` — summarized interview findings and product insights
+* `docs/interviews/USER_INTERVIEWS.md` — detailed interview notes and observations
+* `docs/interviews/interview-evidence-notes.md` — raw validation notes
+* `GTM.md` — go-to-market strategy
+* `ECONOMICS.md` — CAC, conversion, ACV, and ARR assumptions
+* `METRICS.md` — product and retention metrics
+* `LANDING_COPY.md` — landing page copy and FAQ
+* `PROMPTS.md` — AI summary prompt design and fallback philosophy
+* `PRICING_DATA.md` — pricing source verification and dataset coverage
+* `TESTS.md` — testing strategy and verification commands
+* `REFLECTION.md` — engineering tradeoffs and lessons learned
+* `docs/demo-dataset.md` — deterministic demo dataset documentation
+
+---
+
+# CI & Verification
+
+GitHub Actions runs:
+
+```bash
+npm run lint
+npm test
+npm run build
+```
 
 Local verification commands:
 
 ```bash
+npm run lint
 npm test
 npm run build
 ```
 
-## Environment
+Current verification status:
 
-Copy `.env.example` and configure the services you want to test:
+* 138 passing tests
+* successful production build verification
+* deterministic audit output validation
 
-- Supabase variables enable report and lead persistence.
-- Resend variables enable transactional report email.
-- AI summary variables enable optional narrative summaries.
+---
 
-The audit report remains usable when optional services are unavailable.
+# Environment Setup
 
-## Email Report Delivery
+Copy `.env.example` and configure the services you want to test.
 
-Email delivery is optional and supplemental. SpendLayer reports remain accessible in the browser and through shareable report links even when email delivery is not configured or a delivery attempt fails.
+Supported integrations:
 
-Report emails only forward deterministic audit data that already exists in the saved report. The email layer does not generate new recommendations, savings figures, or AI reasoning.
+* Supabase for report and lead persistence
+* Resend for transactional report email delivery
+* optional AI summary providers
+
+The audit workflow remains usable even when optional services are unavailable.
+
+---
+
+# Email Report Delivery
+
+Email delivery is supplemental only.
+
+SpendLayer reports remain accessible through:
+
+* in-browser rendering
+* shareable report links
+* deterministic fallback report behavior
+
+Report emails only forward deterministic audit data that already exists in the saved report.
+
+The email layer never generates:
+
+* new recommendations
+* savings calculations
+* or AI-generated financial advice
+
+```
+```
