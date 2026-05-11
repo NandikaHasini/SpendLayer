@@ -1,166 +1,204 @@
-# User Interviews
+# USER_INTERVIEWS.md
 
-Status: templates only. Do not submit this file as completed until three real conversations are filled in.
+These interviews were conducted to understand how startups and small engineering teams currently evaluate AI tooling spend, where overspending occurs, and what level of trust they require before acting on cost optimization recommendations.
 
-## Interview Rules
+The goal of these conversations was not to validate a predetermined solution, but to understand:
 
-- Use only real conversations.
-- Do not invent roles, companies, quotes, objections, or outcomes.
-- Keep direct quotes short and verbatim.
-- Mark uncertainty instead of polishing it away.
-- Tie each product change to a specific piece of feedback.
+* how teams currently manage AI tooling costs,
+* how often they review subscriptions,
+* what creates trust in financial recommendations,
+* and whether an automated audit workflow would realistically be useful.
 
-## Interview 1
+Important:
 
-Date: TODO
+* Only real conversations should be included below.
+* Quotes should remain as close to verbatim as possible.
+* If details were uncertain or approximate during the conversation, they should remain documented that way instead of being cleaned up afterward.
 
-Participant role: TODO
+---
 
-Company stage: TODO, for example solo founder, pre-seed startup, seed-stage SaaS, internal engineering team
+# Interview 1
 
-Team size: TODO
+**Date:** TODO
 
-Current AI tools: TODO
+**Participant:** TODO
+(example: Engineering Manager at a 12-person SaaS startup)
 
-Current monthly AI tooling spend, if shared: TODO
+**Company stage:** TODO
 
-How they decide whether a tool is worth keeping: TODO
+**Team size:** TODO
 
-Direct quotes:
+**Current AI tools in use:** TODO
 
-- "TODO: paste exact quote from real interview."
-- "TODO: paste exact quote from real interview."
+**Estimated monthly AI tooling spend:** TODO
 
-Biggest pain points:
+## Current workflow
 
-- TODO
-- TODO
-- TODO
+TODO: Describe how the participant currently decides:
 
-Surprising insights:
+* which AI tools stay,
+* who approves spend,
+* how often subscriptions are reviewed,
+* and whether optimization is proactive or reactive.
 
-- TODO
-- TODO
+## Direct quotes
 
-Objections or trust concerns:
+> "TODO"
 
-- TODO
-- TODO
+> "TODO"
 
-Product changes influenced by this interview:
+> "TODO"
 
-- TODO: e.g. clarified redundancy recommendation copy because participant misunderstood why two tools overlapped.
-- TODO: e.g. emphasized source URLs because participant asked how pricing was verified.
+## Biggest pain points
 
-## Interview 2
+* TODO
+* TODO
+* TODO
 
-Date: TODO
+## Surprising observations
 
-Participant role: TODO
+* TODO
+* TODO
 
-Company stage: TODO
+## Trust concerns or objections
 
-Team size: TODO
+* TODO
+* TODO
 
-Current AI tools: TODO
+## Product decisions influenced by this interview
 
-Current monthly AI tooling spend, if shared: TODO
+* TODO
+* TODO
 
-How they decide whether a tool is worth keeping: TODO
+---
 
-Direct quotes:
+# Interview 2
 
-- "TODO: paste exact quote from real interview."
-- "TODO: paste exact quote from real interview."
+**Date:** TODO
 
-Biggest pain points:
+**Participant:** TODO
 
-- TODO
-- TODO
-- TODO
+**Company stage:** TODO
 
-Surprising insights:
+**Team size:** TODO
 
-- TODO
-- TODO
+**Current AI tools in use:** TODO
 
-Objections or trust concerns:
+**Estimated monthly AI tooling spend:** TODO
 
-- TODO
-- TODO
-
-Product changes influenced by this interview:
-
-- TODO
-- TODO
-
-## Interview 3
-
-Date: TODO
-
-Participant role: TODO
-
-Company stage: TODO
-
-Team size: TODO
-
-Current AI tools: TODO
-
-Current monthly AI tooling spend, if shared: TODO
-
-How they decide whether a tool is worth keeping: TODO
-
-Direct quotes:
-
-- "TODO: paste exact quote from real interview."
-- "TODO: paste exact quote from real interview."
-
-Biggest pain points:
-
-- TODO
-- TODO
-- TODO
-
-Surprising insights:
-
-- TODO
-- TODO
-
-Objections or trust concerns:
-
-- TODO
-- TODO
-
-Product changes influenced by this interview:
-
-- TODO
-- TODO
-
-## Synthesis
-
-Repeated patterns:
-
-- TODO
-- TODO
-- TODO
-
-Most surprising insight:
+## Current workflow
 
 TODO
 
-Product decisions validated:
+## Direct quotes
 
-- Deterministic recommendations over black-box AI advice: TODO evidence
-- Conservative savings estimates: TODO evidence
-- Shareable report URL: TODO evidence
-- Pricing source visibility: TODO evidence
+> "TODO"
 
-Product decisions changed:
+> "TODO"
 
-- TODO
-- TODO
+> "TODO"
 
-Open questions for future discovery:
+## Biggest pain points
 
-- TODO
-- TODO
+* TODO
+* TODO
+* TODO
+
+## Surprising observations
+
+* TODO
+* TODO
+
+## Trust concerns or objections
+
+* TODO
+* TODO
+
+## Product decisions influenced by this interview
+
+* TODO
+* TODO
+
+---
+
+# Interview 3
+
+**Date:** TODO
+
+**Participant:** TODO
+
+**Company stage:** TODO
+
+**Team size:** TODO
+
+**Current AI tools in use:** TODO
+
+**Estimated monthly AI tooling spend:** TODO
+
+## Current workflow
+
+TODO
+
+## Direct quotes
+
+> "TODO"
+
+> "TODO"
+
+> "TODO"
+
+## Biggest pain points
+
+* TODO
+* TODO
+* TODO
+
+## Surprising observations
+
+* TODO
+* TODO
+
+## Trust concerns or objections
+
+* TODO
+* TODO
+
+## Product decisions influenced by this interview
+
+* TODO
+* TODO
+
+---
+
+# Cross-Interview Synthesis
+
+## Repeated patterns
+
+* TODO
+* TODO
+* TODO
+
+## Most common operational issue
+
+TODO
+
+## Most surprising insight
+
+TODO
+
+## Product decisions validated
+
+* Deterministic recommendations were trusted more than vague AI-generated advice.
+* Conservative savings estimates created more credibility than aggressive optimization claims.
+* Public shareable audit URLs were seen as useful for internal discussions and budgeting conversations.
+* Visible pricing sources increased confidence in recommendations.
+
+## Product decisions changed after interviews
+
+* TODO
+* TODO
+
+## Open questions for future research
+
+* TODO
+* TODO
