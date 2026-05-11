@@ -160,7 +160,7 @@ export function ReportView({
     useAuditStore()
 
   useEffect(() => {
-    setHasMounted(true)
+    queueMicrotask(() => setHasMounted(true))
   }, [])
 
   const localReport =

@@ -7,6 +7,7 @@ import {
   getOverlappingVendors,
 } from '@/lib/pricing'
 import { VENDORS } from '@/lib/pricing/tools'
+import type { ToolPlan } from '@/types/audit'
 
 describe('getVendorById', () => {
   it('returns vendor for known id', () => {
@@ -32,12 +33,12 @@ describe('getPlanByName', () => {
 
 describe('getEffectiveMonthlyCost', () => {
   it('uses flatMonthlyPrice when set', () => {
-    const plan = { flatMonthlyPrice: 99, monthlyPricePerSeat: 20 } as any
+    const plan = { flatMonthlyPrice: 99, monthlyPricePerSeat: 20 } as ToolPlan
     expect(getEffectiveMonthlyCost(plan, 5)).toBe(99)
   })
 
   it('uses per-seat pricing when flatMonthlyPrice is null', () => {
-    const plan = { flatMonthlyPrice: null, monthlyPricePerSeat: 20 } as any
+    const plan = { flatMonthlyPrice: null, monthlyPricePerSeat: 20 } as ToolPlan
     expect(getEffectiveMonthlyCost(plan, 3)).toBe(60)
   })
 })
@@ -72,14 +73,14 @@ describe('getOverlappingVendors', () => {
 
 describe('Pricing data integrity', () => {
   it('all vendors have at least one plan', () => {
-    VENDORS.forEach((vendor: any) => {
+    VENDORS.forEach((vendor) => {
       expect(vendor.plans.length).toBeGreaterThan(0)
     })
   })
 
   it('all plans have sourceUrl and lastVerified', () => {
-    VENDORS.forEach((vendor: any) => {
-      vendor.plans.forEach((plan: any) => {
+    VENDORS.forEach((vendor) => {
+      vendor.plans.forEach((plan) => {
         expect(plan.sourceUrl).toBeTruthy()
         expect(plan.lastVerified).toMatch(/^\d{4}-\d{2}-\d{2}$/)
       })
@@ -87,8 +88,8 @@ describe('Pricing data integrity', () => {
   })
 
   it('all plan costs are non-negative', () => {
-    VENDORS.forEach((vendor: any) => {
-      vendor.plans.forEach((plan: any) => {
+    VENDORS.forEach((vendor) => {
+      vendor.plans.forEach((plan) => {
         expect(plan.monthlyPricePerSeat).toBeGreaterThanOrEqual(0)
       })
     })

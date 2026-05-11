@@ -40,13 +40,23 @@ function validateStep(
     if (step === 2) stepTwoSchema.parse(values)
     if (step === 3) stepThreeSchema.parse(values)
     return {}
-  } catch (err: any) {
+  } catch (err: unknown) {
     const errors: Partial<Record<string, string>> = {}
-    const issues = err?.issues ?? err?.errors
-    if (issues) {
+    const issues =
+      typeof err === 'object' && err !== null
+        ? 'issues' in err
+          ? err.issues
+          : 'errors' in err
+            ? err.errors
+            : null
+        : null
+
+    if (Array.isArray(issues)) {
       for (const e of issues) {
-        const key = e.path?.[0] as string
-        if (key) errors[key] = e.message
+        const key = Array.isArray(e.path) ? e.path[0] : null
+        if (typeof key === 'string' && typeof e.message === 'string') {
+          errors[key] = e.message
+        }
       }
     }
     return errors
@@ -63,7 +73,7 @@ export function AuditForm() {
   const displayStep = hasMounted ? normalizeFormStep(currentStep) : 1
 
   useEffect(() => {
-    setHasMounted(true)
+    queueMicrotask(() => setHasMounted(true))
   }, [])
 
   const handleChange = (partial: Partial<AuditFormValues>) => {
