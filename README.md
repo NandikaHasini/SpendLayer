@@ -2,7 +2,7 @@
 
 SpendLayer is a deterministic AI spend audit platform for startup teams. Users enter their AI tooling stack, monthly spend, workflow type, and team size to receive structured recommendations and conservative savings estimates.
 
-Deployed URL: TODO
+Deployed URL: https://spend-layer.vercel.app/
 
 Demo report: `/spend-report/demo`
 

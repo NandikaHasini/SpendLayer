@@ -1,47 +1,95 @@
-# Interview Evidence Notes
+# INTERVIEW_EVIDENCE_NOTES.md
 
-Use this file for rough researcher notes during or right after a session.
+This file contains rough observation notes captured during or immediately after lightweight user conversations.
 
-Keep it messy if needed. The point is to preserve what was actually said or noticed before it gets cleaned up into the main interview summary.
+The purpose of these notes is to preserve:
 
-## Note format
+* uncertainty,
+* hesitation,
+* confusion,
+* skepticism,
+* and incomplete reactions
 
-* timestamp
-* what the user was trying to do
-* where they hesitated
-* exact words worth keeping
-* anything they skipped or misunderstood
-* follow-up questions to ask later
+before they get summarized into higher-level conclusions.
 
-## Example structure
+These are intentionally messy and operational.
+
+They should not be rewritten into overly polished narratives after the fact.
+
+---
+
+# What to capture
+
+During or immediately after a conversation, record:
+
+* what the participant was trying to do
+* where they hesitated or paused
+* what confused them
+* what they skipped
+* what they questioned
+* what they trusted less than expected
+* exact wording worth preserving
+* follow-up questions worth revisiting later
+
+---
+
+# Lightweight note format
 
 ```text
-09:12 - opened landing page, skipped intro text, went straight to audit
-09:14 - thought the pricing estimate was per tool, not per seat
-09:16 - asked if report can export to CSV
-09:18 - wanted history / trend view, not just one-off audit
-09:21 - paused on "confidence" label, asked what it means
-09:24 - said the report looked useful but wanted to verify numbers manually
+09:12 - opened landing page, skipped intro copy, went directly to audit
+
+09:14 - thought pricing estimate was per tool instead of per seat
+
+09:16 - asked whether report supports CSV export
+
+09:18 - said they wanted trend/history view instead of one-off snapshot
+
+09:21 - paused on "confidence" wording and asked what it meant
+
+09:24 - said report looked useful but still wanted to manually verify pricing
+
+09:27 - ignored FAQ section completely
+
+09:29 - asked whether recommendations were AI-generated or rule-based
 ```
 
-## Shorthand reminders
+---
 
-* `??` for things that sounded uncertain
-* `ask later` for follow-up questions
-* `needs proof` when they asked for source detail
-* `skip` when they ignored copy or instructions
-* `export` when they asked for CSV or another format
+# Shorthand markers
 
-## What to preserve
+Use lightweight shorthand if useful during interviews:
 
-* friction around report timing
+| Marker        | Meaning                                           |
+| ------------- | ------------------------------------------------- |
+| `??`          | participant sounded uncertain                     |
+| `ask later`   | follow-up worth revisiting                        |
+| `needs proof` | participant wanted verification/source detail     |
+| `skip`        | participant ignored section or instruction        |
+| `export`      | participant requested CSV/export/history          |
+| `trust`       | participant questioned recommendation reliability |
+
+---
+
+# Important signals to preserve
+
+Especially preserve moments involving:
+
+* hesitation before submitting audit
 * confusion about pricing assumptions
-* requests for history, exports, or shareable evidence
-* moments where the user trusted the output less than expected
-* reactions that were lukewarm instead of clearly positive
+* skepticism toward savings estimates
+* reactions to deterministic vs AI-generated recommendations
+* requests for exports/history/trend tracking
+* moments where the participant trusted the output less than expected
+* lukewarm or mixed reactions instead of only positive feedback
 
-## What not to do
+---
 
-* do not rewrite rough notes into a fake clean narrative
-* do not invent a stronger conclusion than the notes support
-* do not turn a single comment into a product decision without backing it up
+# Important constraints
+
+* Do not fabricate reactions afterward.
+* Do not rewrite rough notes into a cleaner story than what actually happened.
+* Do not convert one isolated comment into a major product decision without repeated evidence.
+* Preserve ambiguity if the participant sounded unsure.
+* Preserve disagreement if feedback conflicted.
+
+The goal of this file is evidence preservation, not presentation polish.

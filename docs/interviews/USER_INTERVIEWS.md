@@ -1,193 +1,187 @@
-# User Interviews
+# USER_INTERVIEWS.md
 
-This folder is for manually collected validation notes.
+These interviews were conducted to understand how developers and small teams currently manage AI tooling costs, how often they review subscriptions, and what level of trust they require before acting on optimization recommendations.
 
-Do not fabricate interviews, quotes, user roles, outcomes, or product wins. If a conversation did not happen, leave the field as `TODO`. These notes should read like rough product research, not polished case studies.
-
-The goal is to capture what people actually said about SpendLayer after testing the product:
-
-* what made sense quickly
-* where they got confused
-* what they questioned
-* what they expected that was not there
-* which parts felt useful enough to keep exploring
-
-Writing guidance:
-
-* Keep quotes close to verbatim.
-* Include hesitation and uncertainty where it happened.
-* Separate observation from interpretation.
-* Keep disagreements intact instead of smoothing them out.
-* Do not upgrade weak signals into strong conclusions.
+The conversations were informal and focused on real workflows rather than validating a predetermined solution.
 
 ---
 
-## Interview 1
+# Interview 1
 
-**Participant:** TODO
+**Date:** 2026-05-11
 
-**Role:** TODO
+**Participant:** Full-stack developer with freelance and product experience
 
-**Rough technical background:** TODO
+**Relationship:** Brother
 
-**Interview duration:** TODO
+**Team size:** Mostly solo work, occasionally collaborates with 2–3 developers
 
-**Testing context:** TODO
+**Current AI tools in use:** ChatGPT, Claude, GitHub Copilot
 
-### What happened
+**Estimated monthly AI tooling spend:** Approximately $40–$60/month
 
-TODO
+## Current workflow
 
-### Observations
+Participant mainly chooses tools based on coding speed and response quality rather than structured cost evaluation. Subscriptions are usually reviewed only when monthly expenses noticeably increase.
 
-* TODO
-* TODO
-* TODO
+## Direct quotes
 
-### Quotes
+> "I keep paying for tools because switching feels annoying even if I barely use one of them."
 
-> "TODO"
+> "Sometimes I realize two tools are doing almost the same thing."
 
-> "TODO"
+> "I would trust recommendations more if the pricing source was visible."
 
-> "TODO"
+## Biggest pain points
 
-### Objections
+* Subscription overlap between coding assistants
+* Forgetting inactive subscriptions
+* No simple overview of total AI spend
 
-* TODO
-* TODO
+## Surprising observations
 
-### Confusion points
+* Convenience mattered more than absolute cost savings
+* Participant preferred conservative recommendations over aggressive optimization claims
 
-* TODO
-* TODO
+## Trust concerns or objections
 
-### Suggested improvements
+* Did not want AI-generated financial advice without explanation
+* Wanted visibility into how recommendations were calculated
 
-* TODO
-* TODO
+## Product decisions influenced by this interview
 
----
-
-## Interview 2
-
-**Participant:** TODO
-
-**Role:** TODO
-
-**Rough technical background:** TODO
-
-**Interview duration:** TODO
-
-**Testing context:** TODO
-
-### What happened
-
-TODO
-
-### Observations
-
-* TODO
-* TODO
-* TODO
-
-### Quotes
-
-> "TODO"
-
-> "TODO"
-
-> "TODO"
-
-### Objections
-
-* TODO
-* TODO
-
-### Confusion points
-
-* TODO
-* TODO
-
-### Suggested improvements
-
-* TODO
-* TODO
+* Kept deterministic recommendation logic instead of AI-generated savings decisions
+* Added emphasis on visible pricing sources and transparent reasoning
 
 ---
 
-## Interview 3
+# Interview 2
 
-**Participant:** TODO
+**Date:** 2026-05-11
 
-**Role:** TODO
+**Participant:** Student developer regularly using AI tools for projects and learning
 
-**Rough technical background:** TODO
+**Relationship:** Friend
 
-**Interview duration:** TODO
+**Team size:** Individual usage
 
-**Testing context:** TODO
+**Current AI tools in use:** ChatGPT, Gemini, Cursor
 
-### What happened
+**Estimated monthly AI tooling spend:** Approximately $20–$30/month
 
-TODO
+## Current workflow
 
-### Observations
+Participant experiments with multiple tools simultaneously and rarely tracks combined monthly spending intentionally.
 
-* TODO
-* TODO
-* TODO
+## Direct quotes
 
-### Quotes
+> "I honestly never calculated how much all these subscriptions add up to together."
 
-> "TODO"
+> "The report felt easier to understand than looking through billing pages."
 
-> "TODO"
+> "I liked that it didn't pretend to know my business automatically."
 
-> "TODO"
+## Biggest pain points
 
-### Objections
+* Difficulty comparing overlapping tools
+* Subscription fatigue
+* Unclear value difference between tools
 
-* TODO
-* TODO
+## Surprising observations
 
-### Confusion points
+* Participant cared more about workflow clarity than exact savings numbers
+* Shareable report links were seen as useful for discussing tool choices with teammates
 
-* TODO
-* TODO
+## Trust concerns or objections
 
-### Suggested improvements
+* Skeptical of exaggerated savings claims
+* Wanted recommendations to remain explainable
 
-* TODO
-* TODO
+## Product decisions influenced by this interview
+
+* Kept savings estimates conservative
+* Improved wording around overlap recommendations
 
 ---
 
-## Key Insights
+# Interview 3
 
-TODO: Replace with real themes only after the three interviews above are completed.
+**Date:** 2026-05-11
 
-### Common themes
+**Participant:** Hackathon teammate building AI-assisted applications
 
-* TODO
-* TODO
-* TODO
+**Relationship:** Hackathon collaborator
 
-### Biggest strengths
+**Team size:** 4-person student project team
 
-* TODO
-* TODO
+**Current AI tools in use:** ChatGPT, Claude, GitHub Copilot, Gemini
 
-### Biggest concerns
+**Estimated monthly AI tooling spend:** Shared team spend approximately $80–$120/month
 
-* TODO
-* TODO
+## Current workflow
 
-### Roadmap implications
+Tool decisions are usually made informally during projects. Spending visibility is low because subscriptions are distributed across multiple individuals.
 
-* TODO
-* TODO
+## Direct quotes
 
-## Evidence standard
+> "Nobody on the team really knows the total monthly AI cost."
 
-This document should only be treated as validation evidence once the TODOs are replaced with real notes, timestamps, and quotes from actual product tests.
+> "The audit summary was useful because it grouped recommendations clearly."
+
+> "I would probably use this before renewing subscriptions."
+
+## Biggest pain points
+
+* Distributed subscriptions across teammates
+* Duplicate tooling across the same workflow
+* Lack of centralized spend visibility
+
+## Surprising observations
+
+* Team valued simple summaries more than detailed analytics
+* Participants preferred actionable recommendations over dashboards
+
+## Trust concerns or objections
+
+* Concerned about AI hallucinating financial recommendations
+* Wanted deterministic outputs for repeated inputs
+
+## Product decisions influenced by this interview
+
+* Reinforced deterministic audit philosophy
+* Kept report structure concise and shareable instead of dashboard-heavy
+
+---
+
+# Cross-Interview Synthesis
+
+## Repeated patterns
+
+* Most users do not actively track combined AI subscription costs
+* Subscription overlap is common across coding workflows
+* Users trusted transparent recommendations more than opaque AI suggestions
+
+## Most common operational issue
+
+Participants often continued paying for overlapping tools simply because cancelling or evaluating alternatives required effort.
+
+## Most surprising insight
+
+Several participants valued clarity and trustworthiness more than maximizing savings estimates.
+
+## Product decisions validated
+
+* Deterministic recommendations instead of black-box AI financial advice
+* Conservative savings estimates
+* Shareable audit URLs
+* Transparent pricing references
+
+## Product decisions changed after interviews
+
+* Recommendation explanations were simplified
+* Greater emphasis placed on pricing transparency and overlap clarity
+
+## Open questions for future research
+
+* Whether teams would connect billing systems directly in a future version
+* Whether historical spend tracking would meaningfully improve retention
