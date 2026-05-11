@@ -32,6 +32,7 @@ Open:
 * Deterministic audit recommendation engine
 * Conservative AI SaaS savings estimation
 * Pricing intelligence for major AI developer tools
+* Extensible vendor pricing dataset architecture
 * Responsive multi-step audit workflow
 * Optional Supabase-backed report persistence
 * Public shareable report URLs
@@ -45,7 +46,9 @@ Open:
 
 # Supported Vendors
 
-SpendLayer currently supports pricing analysis for:
+SpendLayer currently prioritizes pricing analysis for commonly used AI developer tooling subscriptions and startup-focused workflows.
+
+Current vendor coverage includes:
 
 * ChatGPT
 * Claude
@@ -54,7 +57,16 @@ SpendLayer currently supports pricing analysis for:
 * Gemini
 * Windsurf
 
-Supported recommendation types:
+Supported plan categories include:
+
+* Free
+* Pro
+* Team
+* Business
+* Enterprise
+* API usage guidance
+
+Supported recommendation types include:
 
 * `KEEP`
 * `DOWNGRADE`
@@ -62,11 +74,13 @@ Supported recommendation types:
 * `REMOVE_REDUNDANCY`
 * `API_USAGE`
 
+The pricing dataset architecture is intentionally extensible and designed to support additional vendors, workflow-specific tooling categories, and future pricing integrations.
+
 ---
 
 # Architecture Summary
 
-* Next.js App Router handles the frontend, API routes, and public report pages
+* Next.js App Router handles frontend rendering, API routes, and public report pages
 * `lib/audit` contains deterministic rules, calculations, and recommendation logic
 * `lib/pricing/tools.ts` stores manually verified pricing datasets and metadata
 * Supabase stores reports and optional lead capture submissions
@@ -123,6 +137,24 @@ Additional interview notes and supporting observations are documented in:
 
 ---
 
+# Planned Dataset Expansion
+
+The current dataset prioritizes commonly used AI productivity and developer tooling subscriptions frequently adopted by startups and technical teams.
+
+Potential future pricing coverage may include:
+
+* Perplexity
+* Notion AI
+* Midjourney
+* Runway
+* Devin
+* Linear AI workflows
+* Additional API-based AI providers
+
+The current implementation intentionally prioritizes deterministic recommendation reliability and manually verified pricing accuracy over unsupported broad vendor coverage.
+
+---
+
 # Screenshots
 
 Screenshots are stored in:
@@ -156,6 +188,8 @@ Screenshots are stored in:
 ---
 
 # CI & Verification
+
+Verified on: 2026-05-11
 
 GitHub Actions runs:
 
@@ -213,5 +247,3 @@ The email layer never generates:
 * savings calculations
 * or AI-generated financial advice
 
-```
-```
