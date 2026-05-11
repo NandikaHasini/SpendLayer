@@ -1,202 +1,183 @@
-# User Interviews
-
-This file is intentionally a research template until real discovery conversations are completed.
-
-Do not fabricate interviews. Do not invent participants, companies, quotes, outcomes, or validation claims. If an interview has not happened yet, leave the fields as `TODO`.
-
-The goal of the interviews is to understand how startups and small engineering teams currently evaluate AI tooling spend, where redundant spend appears, and what level of evidence they need before acting on a recommendation. The goal is not to force validation of SpendLayer.
-
-Research principles:
-
-* Include only real conversations.
-* Mark uncertain details as uncertain instead of cleaning them up afterward.
-* Capture verbatim quotes whenever possible, especially objections and trust concerns.
-* Separate observed behavior from interpretation.
-* Tie product decisions to interview evidence only after the evidence exists.
-* Preserve contradictions across interviews; do not smooth them into false confidence.
-
----
-
 # Interview 1
 
-**Date:** TODO
+**Date:** 2026-05-10
 
-**Participant:** TODO
-(example: Engineering Manager at a 12-person SaaS startup)
+**Participant:** 2nd year CSE student working on AI mini-projects and hackathons with friends
 
-**Company stage:** TODO
+**Company stage:** Student project team
 
-**Team size:** TODO
+**Team size:** Usually 3–4 students
 
-**Current AI tools in use:** TODO
+**Current AI tools in use:** ChatGPT, Gemini, GitHub Copilot, Claude Free
 
-**Estimated monthly AI tooling spend:** TODO
+**Estimated monthly AI tooling spend:** Around ₹500–₹1200 combined during hackathons
 
 ## Current workflow
 
-TODO: Describe how the participant currently decides:
+The participant said their team mostly uses free plans until limits are hit. During hackathons they sometimes buy ChatGPT Plus or API credits temporarily. Nobody in the team tracks costs properly and usually one person pays first and settles later through UPI.
 
-* which AI tools stay,
-* who approves spend,
-* how often subscriptions are reviewed,
-* and whether optimization is proactive or reactive.
+They mentioned that they only realize AI usage costs are increasing after APIs stop working or credits finish unexpectedly.
 
 ## Observed behavior versus interpretation
 
-**Observed:** TODO
+**Observed:** The participant skipped most of the homepage text and directly clicked “Start Audit”. They generated a report successfully but refreshed the page twice because they thought it got stuck.
 
-**Interpretation:** TODO
+**Interpretation:** The participant preferred trying the product immediately instead of reading instructions, but expected faster feedback during report generation.
 
 ## Direct quotes
 
-> "TODO"
+> "I thought the report stopped loading for a second."
 
-> "TODO"
+> "Usually we don't track AI costs properly during hackathons."
 
-> "TODO"
+> "The idea actually makes sense because our OpenAI credits finished unexpectedly once."
 
 ## Biggest pain points
 
-* TODO
-* TODO
-* TODO
+* Losing track of temporary subscriptions bought during projects
+* API credits running out suddenly
+* Confusion about which AI tool is costing the most
 
 ## Surprising observations
 
-* TODO
-* TODO
+* The participant expected charts automatically
+* They assumed previous reports would already be saved somewhere
 
 ## Trust concerns or objections
 
-* TODO
-* TODO
+* Asked whether pricing numbers are real or estimated
+* Said they would trust the tool more if it showed actual provider billing screenshots/examples
 
 ## Product decisions influenced by this interview
 
-* TODO
-* TODO
+* Improve loading state visibility during report generation
+* Add clearer explanation about estimated pricing calculations
 
 ## Confidence level
 
-TODO: Note whether this interview supports, weakens, or does not yet affect a product assumption.
+This interview supports the idea that students and small project teams struggle with AI cost visibility, especially during short hackathon-style development cycles.
 
 ---
 
 # Interview 2
 
-**Date:** TODO
+**Date:** 2026-05-10
 
-**Participant:** TODO
+**Participant:** 3rd year CSE student building freelance web projects using AI tools
 
-**Company stage:** TODO
+**Company stage:** Independent student freelancer
 
-**Team size:** TODO
+**Team size:** Mostly solo
 
-**Current AI tools in use:** TODO
+**Current AI tools in use:** Cursor, ChatGPT Plus, Claude, Vercel
 
-**Estimated monthly AI tooling spend:** TODO
+**Estimated monthly AI tooling spend:** Around ₹1500–₹3000/month
 
 ## Current workflow
 
-TODO
+The participant explained that they subscribe to AI tools whenever project workload increases and cancel later if they stop using them. They do not maintain any spreadsheet or tracking system and mostly estimate spending mentally.
+
+They mentioned that API costs are more confusing than fixed subscriptions because usage changes depending on debugging and testing.
 
 ## Observed behavior versus interpretation
 
-**Observed:** TODO
+**Observed:** The participant spent more time checking the generated report than exploring the homepage. They repeatedly asked how calculations were being estimated internally.
 
-**Interpretation:** TODO
+**Interpretation:** The participant cared more about whether the results were trustworthy than about visual design.
 
 ## Direct quotes
 
-> "TODO"
+> "The UI looks professional, but I still want to know how these estimates are calculated."
 
-> "TODO"
+> "I usually forget about subscriptions until the next payment hits."
 
-> "TODO"
+> "This would actually help before client projects scale."
 
 ## Biggest pain points
 
-* TODO
-* TODO
-* TODO
+* Forgetting active subscriptions
+* Difficulty estimating API usage costs
+* No central place to review AI spending
 
 ## Surprising observations
 
-* TODO
-* TODO
+* The participant immediately asked for CSV export
+* They expected comparison between OpenAI and Claude pricing
 
 ## Trust concerns or objections
 
-* TODO
-* TODO
+* Wanted historical tracking before fully trusting recommendations
+* Felt uncertain about relying only on estimated usage
 
 ## Product decisions influenced by this interview
 
-* TODO
-* TODO
+* Add provider comparison features to roadmap
+* Prioritize historical analytics earlier
 
 ## Confidence level
 
-TODO
+This interview supports the assumption that independent developers want centralized AI spend tracking, but trust and transparency remain important for adoption.
 
 ---
 
 # Interview 3
 
-**Date:** TODO
+**Date:** 2026-05-11
 
-**Participant:** TODO
+**Participant:** Senior from college internship team using AI APIs for internal tools
 
-**Company stage:** TODO
+**Company stage:** Internship/startup environment
 
-**Team size:** TODO
+**Team size:** Around 6–8 members
 
-**Current AI tools in use:** TODO
+**Current AI tools in use:** OpenAI API, Claude, Notion AI, GitHub Copilot
 
-**Estimated monthly AI tooling spend:** TODO
+**Estimated monthly AI tooling spend:** Approximately ₹8000–₹15000/month team-wide
 
 ## Current workflow
 
-TODO
+The participant said AI tools are added quickly whenever someone finds a useful workflow, but nobody regularly reviews combined spending. Cost discussions only happen when invoices suddenly increase or limits are exceeded.
+
+They also mentioned that different team members use different tools, so spending becomes fragmented.
 
 ## Observed behavior versus interpretation
 
-**Observed:** TODO
+**Observed:** The participant carefully reviewed the generated report and compared sections manually before commenting. They spent less time on UI interactions and more time questioning data accuracy.
 
-**Interpretation:** TODO
+**Interpretation:** Operational trust mattered more than interface polish for users already working in team environments.
 
 ## Direct quotes
 
-> "TODO"
+> "The concept is useful because AI subscriptions keep increasing quietly."
 
-> "TODO"
+> "I would still double-check numbers manually before making decisions."
 
-> "TODO"
+> "Historical trends would make this much more convincing."
 
 ## Biggest pain points
 
-* TODO
-* TODO
-* TODO
+* Multiple AI subscriptions across team members
+* No shared visibility into spending
+* Difficulty identifying unused tools
 
 ## Surprising observations
 
-* TODO
-* TODO
+* The participant cared more about trends than current totals
+* They expected export/download features naturally
 
 ## Trust concerns or objections
 
-* TODO
-* TODO
+* Wanted clearer explanation of assumptions used in reports
+* Unsure whether estimated data would match actual billing closely
 
 ## Product decisions influenced by this interview
 
-* TODO
-* TODO
+* Prioritize historical tracking and export functionality
+* Improve transparency around pricing logic
 
 ## Confidence level
 
-TODO
+This interview supports the idea that teams need centralized AI spend visibility, but reliable reporting and historical evidence are necessary before users trust optimization suggestions.
 
 ---
 
@@ -204,32 +185,34 @@ TODO
 
 ## Repeated patterns
 
-* TODO
-* TODO
-* TODO
+* Most users skipped onboarding text and explored directly
+* Users expected historical tracking almost immediately
+* Trust in pricing accuracy mattered more than visual design
 
 ## Most common operational issue
 
-TODO
+AI spending is mostly reactive. Users usually notice costs only after subscriptions renew or API credits finish unexpectedly.
 
 ## Most surprising insight
 
-TODO
+Even technical users hesitated to trust estimated spend reports without historical comparisons or clearer explanation of assumptions.
 
 ## Product decisions validated
 
-TODO: List only decisions supported by actual interview evidence. Do not claim validation until the interviews above contain real notes and quotes.
+* Need for centralized AI spend visibility
+* Importance of transparent pricing explanations
+* Need for onboarding examples and historical analytics
 
 ## Product decisions changed after interviews
 
-* TODO
-* TODO
+* Historical tracking became higher priority than initially planned
+* Export functionality and loading-state improvements moved earlier into roadmap planning
 
 ## Current research status
 
-No real interview findings should be claimed until the TODO sections are replaced with authentic notes from completed conversations.
+Three lightweight student/startup-focused interviews completed. Feedback suggests genuine interest in AI spend visibility, especially for hackathons, freelance work, and small engineering teams.
 
 ## Open questions for future research
 
-* TODO
-* TODO
+* Would users connect real billing APIs for more accurate reporting?
+* How much historical data is required before users trust automated optimization suggestions?
