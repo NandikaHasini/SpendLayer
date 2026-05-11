@@ -51,12 +51,12 @@ No. Enter your stack manually. This keeps the demo lightweight and avoids unnece
 
 Yes. Each saved audit has a shareable report URL.
 
-## Mock Social Proof
+## Quote Placeholders
 
-Use only as clearly labeled placeholder copy until replaced with real user quotes.
+Use only as clearly labeled placeholder copy until replaced with real user quotes from completed interviews.
 
 - "TODO: Replace with real founder quote after interview."
 - "TODO: Replace with real engineering manager quote after interview."
 - "TODO: Replace with real user feedback after demo."
 
-Do not present mock social proof as real customer evidence.
+Do not present quote placeholders as real customer evidence.

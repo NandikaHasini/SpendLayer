@@ -80,15 +80,14 @@ Verify:
 
 ## Current Verification Status
 
-* 110 tests passing
-* zero TypeScript build errors
-* deterministic outputs verified
-* responsive QA completed
-* persistence behavior verified
+Expected pre-submission checks:
 
-AI summary fallback tests
-lead capture tests
-timeout handling tests+npm 
+* `npm test` should pass.
+* `npm run build` should pass.
+* Deterministic audit outputs should remain stable.
+* Persistence behavior should degrade gracefully when optional services are unavailable.
+
+Previously captured screenshots in `docs/screenshots/terminal-tests.png` and `docs/screenshots/terminal-build.png` should be refreshed by the submitter if code changes are made after this audit.
 
 ## Verification Commands
 

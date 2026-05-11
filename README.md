@@ -23,7 +23,7 @@ Open `http://localhost:3000`, run an audit, or visit `http://localhost:3000/spen
 - Pricing intelligence for ChatGPT, Claude, Cursor, GitHub Copilot, Gemini, and Windsurf
 - Recommendation types: `KEEP`, `DOWNGRADE`, `CONSOLIDATE`, `REMOVE_REDUNDANCY`, and informational `API_USAGE`
 - Responsive multi-step audit workflow
-- Supabase-backed report persistence
+- Optional Supabase-backed report persistence
 - Shareable public report URLs
 - Reliable demo route with deterministic fallback data
 - Optional transactional report email delivery
@@ -57,25 +57,38 @@ The assignment MVP also avoids auth, dashboards, billing, analytics platforms, a
 
 Screenshots are stored in `docs/screenshots/`:
 
-- `homepage-hero.png`
-- `audit-form.png`
-- `report-page.png`
-- `lead-capture-form.png`
-- `email-delivery-success.png`
-- `supabase-lead-persistence.png`
-- `terminal-tests.png`
-- `terminal-build.png`
+- [homepage-hero.png](docs/screenshots/homepage-hero.png)
+- [audit-form.png](docs/screenshots/audit-form.png)
+- [report-page.png](docs/screenshots/report-page.png)
+- [lead-capture-form.png](docs/screenshots/lead-capture-form.png)
+- [email-delivery-success.png](docs/screenshots/email-delivery-success.png)
+- [supabase-lead-persistence.png](docs/screenshots/supabase-lead-persistence.png)
+- [terminal-tests.png](docs/screenshots/terminal-tests.png)
+- [terminal-build.png](docs/screenshots/terminal-build.png)
 
 ## Documentation
 
-- `user_interviews.md` - real interview template with TODO placeholders
+- `USER_INTERVIEWS.md` - real interview template with TODO placeholders
 - `GTM.md` - founder-led go-to-market strategy
-- `economics.md` - conservative CAC, conversion, ACV, and ARR assumptions
-- `metrics.md` - North Star, activation, retention proxy, and pivot thresholds
-- `landing_copy.md` - concise landing copy and FAQ
+- `ECONOMICS.md` - conservative CAC, conversion, ACV, and ARR assumptions
+- `METRICS.md` - North Star, activation, retention proxy, and pivot thresholds
+- `LANDING_COPY.md` - concise landing copy and FAQ
 - `PROMPTS.md` - AI summary prompt, fallback behavior, and deterministic recommendation philosophy
 - `PRICING_DATA.md` - official pricing source index and dataset coverage
+- `TESTS.md` - verification approach and commands
+- `REFLECTION.md` - engineering tradeoffs and lessons learned
 - `docs/demo-dataset.md` - deterministic demo route dataset
+
+## CI and Verification
+
+GitHub Actions runs `npm test` and `npm run build` from `.github/workflows/ci.yml`.
+
+Local verification commands:
+
+```bash
+npm test
+npm run build
+```
 
 ## Environment
 

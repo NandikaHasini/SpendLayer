@@ -76,6 +76,8 @@ No enterprise ACV is assumed for the assignment because the product does not yet
 
 ## ARR Pathway Math
 
+This is scenario math, not a traction claim.
+
 Path to $1K ARR:
 
 - 4 self-serve customers at $25/month
@@ -93,7 +95,7 @@ Path to $50K ARR:
 - or 43 team customers at $99/month
 - or 17 advisory customers at $250/month
 
-The most realistic early path is services-assisted SaaS: use free audits to identify high-intent founders, convert a small number into paid reviews, then learn which recurring monitoring features are worth building.
+The most realistic early path is services-assisted SaaS: use free audits to identify high-intent founders, convert a small number into paid reviews if demand exists, then learn which recurring monitoring features are worth building.
 
 ## Unit Economics Guardrails
 
@@ -101,3 +103,4 @@ The most realistic early path is services-assisted SaaS: use free audits to iden
 - Avoid expensive AI calls in the critical path.
 - Use AI summaries only as optional narrative polish.
 - Do not build dashboards, auth, or billing until there is evidence of repeat usage or paid consultation demand.
+- Treat paid plans as hypotheses until real customer conversations or payments support them.

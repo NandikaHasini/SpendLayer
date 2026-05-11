@@ -18,7 +18,7 @@ Every stored pricing number must have:
 - a clear plan name
 - no unsupported enterprise estimate
 
-Pre-submission source check performed: 2026-05-10.
+Pre-submission documentation check performed: 2026-05-10.
 
 Plan amounts should be manually re-verified before a production launch because AI vendor pricing changes frequently. This documentation pass preserves audit behavior and does not modify engine outputs.
 

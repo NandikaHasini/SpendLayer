@@ -13,6 +13,8 @@ A qualified audit is a completed report with:
 
 This is stronger than raw page traffic because it measures whether the product reaches the point where a founder can evaluate savings.
 
+For Round 1, this is the proposed operating metric. It should not be presented as achieved traction until real usage data exists.
+
 ## Input Metrics
 
 - Unique visitors to the landing page
@@ -63,6 +65,7 @@ Consider a positioning pivot if:
 - Fewer than 40% of audit starters complete the workflow.
 - Fewer than 5% of completed reports submit an email or request follow-up.
 - User interviews show founders understand the output but do not care about the problem.
+- Interview feedback repeatedly identifies the problem as low priority or already solved by existing finance workflows.
 
 Consider a product pivot if:
 

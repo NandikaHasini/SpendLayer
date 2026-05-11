@@ -38,6 +38,8 @@ Expected first-100 mix:
 - 15 users from Hacker News or Product Hunt launch traffic
 - 10 users from referrals created by shareable report URLs
 
+This mix is a planning estimate, not current traction.
+
 ## Communities
 
 High-intent communities:
@@ -78,6 +80,7 @@ X / LinkedIn:
 
 - Post short teardown threads: "What happens when an 8-person startup pays for ChatGPT, Claude, Cursor, Copilot, and Gemini?"
 - Share before/after spend examples using clearly labeled demo data.
+- Avoid using invented customer stories, fabricated quotes, or unlabeled demo outcomes.
 - Invite founders to reply with anonymized tool stacks for a free audit.
 
 ## Zero-Budget Distribution

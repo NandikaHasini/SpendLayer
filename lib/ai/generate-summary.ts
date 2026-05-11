@@ -92,7 +92,7 @@ function buildSummaryPrompt(result: AuditResult): string {
   ).length
   const optimizeCount = recommendations.length - keepCount
 
-  return `You are a concise financial advisor summarizing an AI tooling spend audit for a startup founder.
+  return `You are a concise spend analyst summarizing an AI tooling spend audit for a startup founder.
 
 Audit data:
 - Current monthly spend: $${totalCurrentSpend}
@@ -102,7 +102,7 @@ Audit data:
 - Tools to optimize: ${optimizeCount}
 - Tools already efficient: ${keepCount}
 
-Write a 2–3 sentence professional summary of these audit results.
+Write a 2-3 sentence professional summary of these audit results.
 Be direct and founder-friendly.
 Do NOT invent savings figures. Use only the numbers provided above.
 Do NOT make recommendations beyond what the data shows.

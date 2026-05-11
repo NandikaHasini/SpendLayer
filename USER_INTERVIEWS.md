@@ -1,19 +1,19 @@
-# USER_INTERVIEWS.md
+# User Interviews
 
-These interviews were conducted to understand how startups and small engineering teams currently evaluate AI tooling spend, where overspending occurs, and what level of trust they require before acting on cost optimization recommendations.
+This file is intentionally a research template until real discovery conversations are completed.
 
-The goal of these conversations was not to validate a predetermined solution, but to understand:
+Do not fabricate interviews. Do not invent participants, companies, quotes, outcomes, or validation claims. If an interview has not happened yet, leave the fields as `TODO`.
 
-* how teams currently manage AI tooling costs,
-* how often they review subscriptions,
-* what creates trust in financial recommendations,
-* and whether an automated audit workflow would realistically be useful.
+The goal of the interviews is to understand how startups and small engineering teams currently evaluate AI tooling spend, where redundant spend appears, and what level of evidence they need before acting on a recommendation. The goal is not to force validation of SpendLayer.
 
-Important:
+Research principles:
 
-* Only real conversations should be included below.
-* Quotes should remain as close to verbatim as possible.
-* If details were uncertain or approximate during the conversation, they should remain documented that way instead of being cleaned up afterward.
+* Include only real conversations.
+* Mark uncertain details as uncertain instead of cleaning them up afterward.
+* Capture verbatim quotes whenever possible, especially objections and trust concerns.
+* Separate observed behavior from interpretation.
+* Tie product decisions to interview evidence only after the evidence exists.
+* Preserve contradictions across interviews; do not smooth them into false confidence.
 
 ---
 
@@ -41,6 +41,12 @@ TODO: Describe how the participant currently decides:
 * how often subscriptions are reviewed,
 * and whether optimization is proactive or reactive.
 
+## Observed behavior versus interpretation
+
+**Observed:** TODO
+
+**Interpretation:** TODO
+
 ## Direct quotes
 
 > "TODO"
@@ -69,6 +75,10 @@ TODO: Describe how the participant currently decides:
 
 * TODO
 * TODO
+
+## Confidence level
+
+TODO: Note whether this interview supports, weakens, or does not yet affect a product assumption.
 
 ---
 
@@ -90,6 +100,12 @@ TODO: Describe how the participant currently decides:
 
 TODO
 
+## Observed behavior versus interpretation
+
+**Observed:** TODO
+
+**Interpretation:** TODO
+
 ## Direct quotes
 
 > "TODO"
@@ -118,6 +134,10 @@ TODO
 
 * TODO
 * TODO
+
+## Confidence level
+
+TODO
 
 ---
 
@@ -139,6 +159,12 @@ TODO
 
 TODO
 
+## Observed behavior versus interpretation
+
+**Observed:** TODO
+
+**Interpretation:** TODO
+
 ## Direct quotes
 
 > "TODO"
@@ -168,6 +194,10 @@ TODO
 * TODO
 * TODO
 
+## Confidence level
+
+TODO
+
 ---
 
 # Cross-Interview Synthesis
@@ -188,15 +218,16 @@ TODO
 
 ## Product decisions validated
 
-* Deterministic recommendations were trusted more than vague AI-generated advice.
-* Conservative savings estimates created more credibility than aggressive optimization claims.
-* Public shareable audit URLs were seen as useful for internal discussions and budgeting conversations.
-* Visible pricing sources increased confidence in recommendations.
+TODO: List only decisions supported by actual interview evidence. Do not claim validation until the interviews above contain real notes and quotes.
 
 ## Product decisions changed after interviews
 
 * TODO
 * TODO
+
+## Current research status
+
+No real interview findings should be claimed until the TODO sections are replaced with authentic notes from completed conversations.
 
 ## Open questions for future research
 

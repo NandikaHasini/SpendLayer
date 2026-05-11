@@ -22,7 +22,7 @@ AI is never used for:
 The summary endpoint sends a constrained prompt shaped like this:
 
 ```text
-You summarize deterministic AI tooling spend audit results for a startup founder.
+You are a concise spend analyst summarizing deterministic AI tooling spend audit results for a startup founder.
 
 Audit data:
 - Current monthly spend: $[amount]
@@ -94,3 +94,5 @@ Lead capture is optional and non-blocking.
 - Max tokens: 200
 - Server timeout: 8 seconds
 - Client timeout: 10 seconds
+
+Note: the prompt should avoid presenting the system as a financial advisor. SpendLayer provides deterministic software-spend analysis, not financial advice.
