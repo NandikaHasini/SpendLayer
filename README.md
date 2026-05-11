@@ -68,7 +68,9 @@ Screenshots are stored in `docs/screenshots/`:
 
 ## Documentation
 
-- `USER_INTERVIEWS.md` - real interview template with TODO placeholders
+- `USER_INTERVIEWS.md` - legacy root template kept for assignment compatibility
+- `docs/interviews/USER_INTERVIEWS.md` - manual interview notes scaffold for real validation work
+- `docs/interviews/interview-evidence-notes.md` - rough note format for raw session observations
 - `GTM.md` - founder-led go-to-market strategy
 - `ECONOMICS.md` - conservative CAC, conversion, ACV, and ARR assumptions
 - `METRICS.md` - North Star, activation, retention proxy, and pivot thresholds
@@ -78,6 +80,18 @@ Screenshots are stored in `docs/screenshots/`:
 - `TESTS.md` - verification approach and commands
 - `REFLECTION.md` - engineering tradeoffs and lessons learned
 - `docs/demo-dataset.md` - deterministic demo route dataset
+
+## User Validation
+
+The repository now includes a manual interview notes scaffold under `docs/interviews/`.
+It is set up for three real sessions, but the current content is intentionally a template and should not be treated as validated research.
+
+Once real interviews are added, this section should summarize:
+
+* the participant mix
+* the strongest repeated themes
+* the most requested follow-up features
+* the biggest trust or accuracy concern
 
 ## CI and Verification
 
